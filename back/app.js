@@ -1,29 +1,12 @@
 const express = require('express');
-const mysql = require('mysql');
 const dotenv = require("dotenv");
+const db = require('./db');
 
 const app = express();
 
 app.use(express.json());
 
 dotenv.config();
-
-const database = (module.exports = () => {
-    try {
-        connection = mysql.createConnection({
-            host: process.env.MYSQL_HOST,
-            user: process.env.MYSQL_NDC,
-            password: process.env.MYSQL_MDP,
-            database: 'studysmart_bdd'
-        });
-        connection.connect();
-        console.log('Connexion à MySQL réussie !');
-    } catch (error) {
-        console.log(error);
-        console.log('Connexion à MySQL échouée !');
-    }
-});
-database();
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
