@@ -13,6 +13,28 @@
   justify-content: center;
   padding: 0px 20px;
 }
+.login_left_box_text {
+  display: flex;
+  flex-direction: column;
+  padding-top: 100px;
+  width: 100%;
+  padding-left: 100px;
+}
+.login_left_text_login {
+  color: white;
+  font-size: 20px;
+}
+.login_left_text_welcomeback {
+}
+.login_left_text_welcomeback p {
+  color: white;
+  font-size: 80px;
+  font-weight: bolder;
+}
+.login_left_text_secondtext {
+  color: white;
+  font-size: 25px;
+}
 
 .login_right {
   background-color: white;
