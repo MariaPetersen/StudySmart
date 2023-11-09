@@ -13,10 +13,35 @@
   justify-content: center;
   padding: 0px 20px;
 }
+.login_left_box_text {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 100px;
+}
+.login_left_text_login {
+  color: white;
+  font-size: 20px;
+  font-family: "Saol Display";
+}
+.login_left_text_welcomeback {
+}
+.login_left_text_welcomeback p {
+  color: white;
+  font-size: 80px;
+  font-weight: bolder;
+}
+.login_left_text_secondtext {
+  color: white;
+  font-size: 25px;
+}
+.sous_text_login {
+  font-family: "Saol Display";
+}
 
 .login_right {
   background-color: white;
-  width: 40%;
+  width: 50%;
   height: 650px;
   border-radius: 10px;
   display: flex;
