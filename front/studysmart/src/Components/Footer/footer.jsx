@@ -10,8 +10,12 @@ export default function footer() {
             <p>NEW UPDATES</p>
           </div>
           <div className="section_one_left_register">
-            <input type="text" />
-            <button>SUBMIT</button>
+            <input
+              placeholder="ENTER YOUR EMAIL"
+              className="section_one_resgister_input"
+              type="text"
+            />
+            <button className="section_one_resgister_button">SUBMIT</button>
           </div>
         </div>
         <div className="section_one_left">

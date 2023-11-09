@@ -11,13 +11,38 @@ footer {
   display: flex;
 }
 
-.section_one_right {
+.section_one_left {
   display: flex;
   flex-direction: column;
+  width: 40%;
 }
-.section_one_right_text {
+.section_one_left_text {
   font-weight: bolder;
   font-size: 50px;
+}
+.section_one_left_register {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+}
+.section_one_resgister_input {
+  height: 35px;
+  background-color: #1a1102;
+  border: 1px solid #c4b84e;
+  color: #c4b84e;
+  padding-left: 20px;
+  outline: none;
+  border-radius: 5px;
+  width: 50%;
+}
+.section_one_resgister_input::placeholder {
+  color: #c4b84e;
+}
+.section_one_resgister_button {
+  background-color: #c4b84e;
+  border-radius: 5px;
+  padding: 0px 5px;
+  border: none;
 }
 .section_one_left {
 }
