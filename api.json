@@ -1,0 +1,520 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "StudiSmart API",
+    "description": "API documentation for StudiSmart"
+  },
+  "servers": [
+    {
+      "description": "StudiSmart Live API",
+      "url": "https://server/1.0.0"
+    }
+  ],
+  "paths": {
+    "/user": {
+      "post": {
+        "tags": ["User"],
+        "summary": "Create a new user",
+        "operationId": "createUser",
+        "requestBody": {
+          "description": "User data",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "description": "Email of the new user"
+                  },
+                  "password": {
+                    "type": "string",
+                    "description": "Password of the new user"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "example": "John"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/{userId}": {
+      "get": {
+        "tags": ["User"],
+        "summary": "Retrieve a user by ID",
+        "operationId": "getUserById",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "description": "ID of the user",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "example": "John"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/publication/{Id}": {
+      "get": {
+        "tags": ["Publication"],
+        "summary": "Retrieve a publication",
+        "operationId": "getublicationById",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "publicationId",
+            "description": "ID of the publication",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "publication retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "example": "changeMe"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/publication/all": {
+      "get": {
+        "tags": ["Publication"],
+        "summary": "Retrieve all publication",
+        "operationId": "",
+        "responses": {
+          "200": {
+            "description": "publications retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "example": "changeMe"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/publication": {
+      "post": {
+        "tags": ["Publication"],
+        "summary": "Create a publication",
+        "operationId": "",
+        "requestBody": {
+          "description": "publication data",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "description": "Title of the publication"
+                  },
+                  "content": {
+                    "type": "string",
+                    "description": "Content of the publication"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "publications retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "example": "changeMe"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/publication/{id}": {
+      "put": {
+        "tags": ["Publication"],
+        "summary": "Update a publication",
+        "operationId": "publicationId",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "publicationId",
+            "description": "ID of the publication",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "publication data",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "description": "Title of the publication"
+                  },
+                  "content": {
+                    "type": "string",
+                    "description": "Content of the publication"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "publications retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "example": "changeMe"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Publication"],
+        "summary": "Delete a publication",
+        "operationId": "publicationId",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "publicationId",
+            "description": "ID of the publication",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "publications retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "example": "changeMe"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/profile/{Id}": {
+      "get": {
+        "tags": ["profile"],
+        "summary": "Retrieve a profile",
+        "operationId": "getublicationById",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "profileId",
+            "description": "ID of the profile",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "profile retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "example": "changeMe"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/profile/all": {
+      "get": {
+        "tags": ["profile"],
+        "summary": "Retrieve all profile",
+        "operationId": "",
+        "responses": {
+          "200": {
+            "description": "profiles retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "example": "changeMe"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/profile": {
+      "post": {
+        "tags": ["profile"],
+        "summary": "Create a profile",
+        "operationId": "",
+        "requestBody": {
+          "description": "profile data",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "description": "Title of the profile"
+                  },
+                  "content": {
+                    "type": "string",
+                    "description": "Content of the profile"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "profiles retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "example": "changeMe"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/profile/{id}": {
+      "put": {
+        "tags": ["profile"],
+        "summary": "Update a profile",
+        "operationId": "profileId",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "profileId",
+            "description": "ID of the profile",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "profile data",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "description": "Title of the profile"
+                  },
+                  "content": {
+                    "type": "string",
+                    "description": "Content of the profile"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "profiles retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "example": "changeMe"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["profile"],
+        "summary": "Delete a profile",
+        "operationId": "profileId",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "profileId",
+            "description": "ID of the profile",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "profiles retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "example": "changeMe"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
