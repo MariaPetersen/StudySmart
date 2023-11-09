@@ -5,13 +5,13 @@ export default function login() {
     <div id="login">
       <div className="login_left">
         <div className="login_left_box_text">
-          <span className="login_left_box_login">Log In</span>
-          <span className="login_left_box_welcomeback">
+          <span className="login_left_text_login">Log In</span>
+          <span className="login_left_text_welcomeback">
             <p>WELCOME</p>
             <br />
             <p>BACK</p>
           </span>
-          <span>
+          <span className="login_left_text_secondtext">
             <p>
               Sign back in to your account to post like other users and have a
               custum profile.
