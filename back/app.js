@@ -1,6 +1,6 @@
 const express = require('express');
 const dotenv = require("dotenv");
-const db = require('./db');
+const userRoutes = require("./routes/user");
 
 const app = express();
 
@@ -15,8 +15,6 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use('/', (req, res, next) => {
-    res.send('Hello world');
-});
+app.use('/user', userRoutes);
 
 module.exports = app;
