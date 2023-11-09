@@ -1,7 +1,6 @@
 const bcrypt = require('bcrypt');
 const jtw = require('jsonwebtoken');
 const dotenv = require("dotenv");
-const db = require("./../services/db");
 const { PrismaClient } = require('@prisma/client');
 
 const prisma = new PrismaClient();
@@ -9,7 +8,6 @@ const prisma = new PrismaClient();
 dotenv.config;
 
 const KEY = process.env.RANDOM_KEY;
-
 
 async function signup(req, res, next) {
     try {
@@ -30,35 +28,33 @@ async function signup(req, res, next) {
     }
 };
 
-// exports.login = async (req, res, next) => {
-//     try {
-//         res.status(200).json(user);
-//     } catch (error) {
-//         res.status(400).json(error);
-//     }
-// .then(user => {
-// console.log(user);
-// if (!user) {
-//     res.status(400).json({ message: 'Paire login/mot de passe incorrecte' });
-// };
-// bcrypt.compare(req.body.password, user.password)
-//     .then(valid => {
-//         if (!valid) {
-//             res.status(401).json({ message: 'Paire login/mot de passe incorrecte' });
-//         };
-//         res.status(201).json({
-//             userId: user.id,
-//             token: jtw.sign(
-//                 { userId: user.id },
-//                 `${KEY}`,
-//                 { expiresIn: '24h' }
-//             )
-//         });
-//     }
-//     )
-//     .catch(error => res.status(500).json({ error }));
-// })
-// .catch (error => res.status(500).json({ error }));
-// };
+async function login(req, res, next) {
+    try {
+        const user = await prisma.user.findUnique({
+            where: {
+                email: req.body.email
+            }
+        });
+        bcrypt.compare(req.body.password, user.password)
+            .then(valid => {
+                if (!valid) {
+                    res.status(401).json({ message: 'Paire login/mot de passe incorrecte' });
+                };
+                res.status(201).json({
+                    userId: user.id,
+                    token: jtw.sign(
+                        { userId: user.id },
+                        `${KEY}`,
+                        { expiresIn: '24h' }
+                    )
+                });
+            }
+            )
+            .catch(error => res.status(500).json({ error }));
 
-module.exports = { signup };
+    } catch (error) {
+        res.status(500).json(error);
+    }
+}
+
+module.exports = { signup, login };
