@@ -19,7 +19,7 @@
 }
 
 @font-face {
-  font-family: 'Saol DIsplay';
+  font-family: 'Saol Display';
   src: url('../public/font/SaolDisplay-Regular.ttf');
 }
 
@@ -35,3 +35,4 @@ body {
   padding: 0px;
   box-sizing: border-box;
 }
+
