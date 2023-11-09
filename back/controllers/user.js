@@ -28,37 +28,7 @@ async function signup(req, res, next) {
     } catch (error) {
         res.status(500).json(error);
     }
-    // .then(hash => db.query(`INSERT INTO User (lastname, firstname, email, username, password) 
-    //             VALUES ('${req.body.lastname}', '${req.body.firstname}', '${req.body.email}', '${req.body.username}', '${hash}');`)
-    //     .then(res.status(200).json("User created"))
-    //     .catch(err => res.status(500).json({ err }))
-    // )
-    // .catch(err => res.status(500).json({ err }));
-
 };
-
-// app.post(`/post`, async (req, res) => {
-//     const { title, content, authorEmail } = req.body;
-//     const result = await prisma.post.create({
-//         data: {
-//             title,
-//             content,
-//             published: false,
-//             author: { connect: { email: authorEmail } },
-//         },
-//     });
-//     res.json(result);
-// });
-
-async function login(req, res, next) {
-    const user = await db.query(`SELECT * FROM User WHERE email = '${req.body.email}'`);
-    console.log(user);
-    try {
-        res.status(200).json(user);
-    } catch (error) {
-        res.status(400).json(error);
-    }
-}
 
 // exports.login = async (req, res, next) => {
 //     try {
