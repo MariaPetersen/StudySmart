@@ -12,7 +12,12 @@ footer {
 }
 
 .section_one_right {
+  display: flex;
+  flex-direction: column;
 }
-
+.section_one_right_text {
+  font-weight: bolder;
+  font-size: 50px;
+}
 .section_one_left {
 }

@@ -16,13 +16,13 @@
 .login_left_box_text {
   display: flex;
   flex-direction: column;
-  padding-top: 100px;
   width: 100%;
   padding-left: 100px;
 }
 .login_left_text_login {
   color: white;
   font-size: 20px;
+  font-family: "Saol Display";
 }
 .login_left_text_welcomeback {
 }
@@ -35,10 +35,13 @@
   color: white;
   font-size: 25px;
 }
+.sous_text_login {
+  font-family: "Saol Display";
+}
 
 .login_right {
   background-color: white;
-  width: 40%;
+  width: 50%;
   height: 650px;
   border-radius: 10px;
   display: flex;

@@ -12,7 +12,7 @@ export default function login() {
             <p>BACK</p>
           </span>
           <span className="login_left_text_secondtext">
-            <p>
+            <p className="sous_text_login">
               Sign back in to your account to post like other users and have a
               custum profile.
             </p>
