@@ -4,15 +4,14 @@ export default function footer() {
   return (
     <footer>
       <div className="footer_section_one">
-        <div className="section_one_right">
-          <div>
+        <div className="section_one_left">
+          <div className="section_one_left_text">
             <p>DON'T MISS</p>
-            <br />
             <p>NEW UPDATES</p>
           </div>
-          <div>
+          <div className="section_one_left_register">
             <input type="text" />
-            <button></button>
+            <button>SUBMIT</button>
           </div>
         </div>
         <div className="section_one_left">
