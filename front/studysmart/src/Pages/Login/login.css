@@ -86,8 +86,12 @@
 }
 .sous_text_login {
   font-family: "Saol Display";
-  text-align: center;
-  font-weight: 100;
+  text-align: left;
+  @media screen and (max-width: 1000px) {
+    font-family: "Saol Display";
+    text-align: center;
+    font-weight: 100;
+  }
 }
 
 .login_right {
