@@ -86,6 +86,7 @@
   }
 }
 .sous_text_login {
+  text-align: left;
   font-family: "Saol Display";
   text-align: left;
   @media screen and (max-width: 1000px) {
@@ -145,7 +146,7 @@
   }
 }
 
-.login_right_box p {
+.login_right_box label {
   font-size: 17px;
   text-transform: uppercase;
 }
@@ -200,6 +201,7 @@
   width: 100%;
   display: flex;
   padding: 20px 0px;
+  margin-top: 50px;
   justify-content: space-between;
   @media screen and (max-width: 400px) {
     font-size: 10px;
