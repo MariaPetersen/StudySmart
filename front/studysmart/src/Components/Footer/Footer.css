@@ -7,26 +7,53 @@ footer {
   flex-direction: column;
   justify-content: space-between;
   padding: 50px 40px 20px;
+  @media screen and (max-width: 1000px) {
+    padding: 20px 20px;
+    height: 60vh;
+  }
 }
 .footer_section_one {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  @media screen and (max-width: 1000px) {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 90%;
+  }
 }
 
 .section_one_left {
   display: flex;
   flex-direction: column;
   width: 40%;
+  @media screen and (max-width: 1000px) {
+    width: 100%;
+    align-items: center;
+    gap: 20px;
+  }
 }
 .section_one_left_text {
   font-weight: bolder;
   font-size: 50px;
+  @media screen and (max-width: 1000px) {
+    font-size: 45px;
+    text-align: center;
+  }
+  @media screen and (max-width: 400px) {
+    font-size: 30px;
+  }
 }
 .section_one_left_register {
   width: 100%;
   display: flex;
   gap: 10px;
+  @media screen and (max-width: 1000px) {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
 }
 .section_one_resgister_input {
   height: 35px;
@@ -37,6 +64,15 @@ footer {
   outline: none;
   border-radius: 5px;
   width: 50%;
+  @media screen and (max-width: 1000px) {
+    width: 50%;
+    height: 40px;
+    align-items: center;
+  }
+  @media screen and (max-width: 400px) {
+    width: 60%;
+    padding-left: 10px;
+  }
 }
 .section_one_resgister_input::placeholder {
   color: #c4b84e;
@@ -46,6 +82,9 @@ footer {
   border-radius: 5px;
   padding: 0px 5px;
   border: none;
+  @media screen and (max-width: 1000px) {
+    padding: 10px;
+  }
 }
 .section_one_right {
   display: flex;
@@ -53,16 +92,33 @@ footer {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  @media screen and (max-width: 1000px) {
+    width: 100%;
+    margin: 10px 10px;
+    align-items: flex-start;
+  }
+  @media screen and (max-width: 400px) {
+  }
 }
 .section_one_right li {
   list-style: none;
   color: #c4b84e;
   margin: 20px 0px;
   font-size: 20px;
+  @media screen and (max-width: 1000px) {
+    font-size: 15px;
+    margin: 15px 0px;
+  }
+  @media screen and (max-width: 400px) {
+    font-size: 10px;
+  }
 }
 
 .section_one_right span {
   font-size: 22px;
+  @media screen and (max-width: 400px) {
+    font-size: 13px;
+  }
 }
 .section_findus_email {
   text-decoration: none;
@@ -78,4 +134,13 @@ footer {
   text-align: center;
   padding: 20px 200px;
   border-top: 1px solid #c4b84e;
+  @media screen and (max-width: 1000px) {
+    font-size: 15px;
+    padding: 30px 0px 0px;
+    height: 10%;
+    justify-content: flex-end;
+  }
+  @media screen and (max-width: 400px) {
+    font-size: 8px;
+  }
 }

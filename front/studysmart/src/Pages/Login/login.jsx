@@ -1,5 +1,6 @@
 import React from "react";
 import "./Login.css";
+import { NavLink } from "react-router-dom";
 export default function login() {
   return (
     <div id="login">
@@ -8,7 +9,6 @@ export default function login() {
           <span className="login_left_text_login">Log In</span>
           <span className="login_left_text_welcomeback">
             <p>WELCOME</p>
-            <br />
             <p>BACK</p>
           </span>
           <span className="login_left_text_secondtext">
@@ -38,7 +38,12 @@ export default function login() {
           </form>
           <div className="login_form_line">
             <div>DON'T HAVE AN ACCOUNT ?</div>
-            <div>SIGN UP</div>
+            <div>
+              {" "}
+              <NavLink to={"/signup"} className="login_form_signup">
+                SIGN UP
+              </NavLink>
+            </div>
           </div>
         </div>
       </div>
