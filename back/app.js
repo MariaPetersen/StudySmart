@@ -1,6 +1,10 @@
 const express = require('express');
 const dotenv = require("dotenv");
+
+const auth = require("./middleware/auth");
 const userRoutes = require("./routes/user");
+const profileRoutes = require("./routes/profile");
+const publicationRoutes = require("./routes/publication");
 
 const app = express();
 
@@ -16,5 +20,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/user', userRoutes);
+app.use('/profile', auth, profileRoutes);
+app.use('/publication', auth, publicationRoutes);
 
 module.exports = app;
