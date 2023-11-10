@@ -236,9 +236,13 @@
                     "type": "string",
                     "description": "Title of the publication"
                   },
-                  "content": {
+                  "description": {
                     "type": "string",
-                    "description": "Content of the publication"
+                    "description": "description of the publication"
+                  },
+                  "text": {
+                    "type": "string",
+                    "description": "text of the publication"
                   }
                 }
               }
@@ -255,9 +259,25 @@
                   "items": {
                     "type": "object",
                     "properties": {
-                      "name": {
+                      "profile_id": {
+                        "type": "integer",
+                        "example": 2
+                      },
+                      "title": {
                         "type": "string",
-                        "example": "changeMe"
+                        "example": "Mon titre"
+                      },
+                      "description": {
+                        "type": "string",
+                        "example": "Mon article sur javascript"
+                      },
+                      "text": {
+                        "type": "string",
+                        "example": "Javascript est un langage de développement web"
+                      },
+                      "link": {
+                        "type": "string",
+                        "example": "http://images.com"
                       }
                     }
                   }
@@ -443,13 +463,9 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "title": {
+                  "description": {
                     "type": "string",
-                    "description": "Title of the profile"
-                  },
-                  "content": {
-                    "type": "string",
-                    "description": "Content of the profile"
+                    "description": "Description of the profile"
                   }
                 }
               }
@@ -466,9 +482,9 @@
                   "items": {
                     "type": "object",
                     "properties": {
-                      "name": {
-                        "type": "string",
-                        "example": "changeMe"
+                      "userId": {
+                        "type": "integer",
+                        "example": 3
                       }
                     }
                   }
