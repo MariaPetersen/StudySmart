@@ -13,7 +13,9 @@ export default function footer() {
             <input
               placeholder="ENTER YOUR EMAIL"
               className="section_one_resgister_input"
-              type="text"
+              type="email"
+              name="email"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
             />
             <button className="section_one_resgister_button">SUBMIT</button>
           </div>
