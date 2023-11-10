@@ -41,9 +41,7 @@ export default function login() {
               <input
                 className="login_input"
                 type="password"
-                minlength="8"
                 name="password"
-                id="password"
                 placeholder=""
                 required
               />
