@@ -1,0 +1,43 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("PRISMA_URL")
+}
+
+model Comments {
+  id             Int      @id @default(autoincrement())
+  publication_id Int
+  text           String   @db.Text
+  reaction       String   @db.Text
+  reponse        String   @db.Text
+  date           DateTime @default(now()) @db.Date
+}
+
+model Profile {
+  id          Int    @id @default(autoincrement())
+  user_id     Int
+  gender      String @db.Text
+  description String @db.Text
+}
+
+model Publication {
+  id          Int      @id @default(autoincrement())
+  profile_id  Int
+  title       String   @db.Char(255)
+  description String   @db.Text
+  date        DateTime @default(now()) @db.Date
+  text        String   @db.Text
+  link        String   @db.Text
+}
+
+model User {
+  id        Int    @id @default(autoincrement())
+  lastname  String @db.Text
+  firstname String @db.Text
+  email     String @unique(map: "email") 
+  username  String @unique(map: "username") 
+  password  String @db.Text
+}

@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "./nav.css";
+import "./Nav.css";
 
 export default function Nav() {
   return (
@@ -16,7 +16,7 @@ export default function Nav() {
           login
         </NavLink>
         <NavLink to={"/signup"} className="nav_button_signup">
-          sign up
+          sign up up
         </NavLink>
       </div>
     </div>

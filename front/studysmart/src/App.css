@@ -1,11 +1,38 @@
+@font-face {
+  font-family: 'GT Regular';
+  src: url('../public/font/GTWalsheimPro-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'GT Light';
+  src: url('../public/font/GTWalsheimPro-Light.ttf');
+}
+
+@font-face {
+  font-family: 'GT Bold';
+  src: url('../public/font/GTWalsheimPro-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'GT Medium';
+  src: url('../public/font/GTWalsheimPro-Medium.ttf');
+}
+
+@font-face {
+  font-family: 'Saol Display';
+  src: url('../public/font/SaolDisplay-Regular.ttf');
+}
+
 body {
   width: 100%;
   height: 100%;
-  background-color: #734c19;
+  background-color: #742415;
 }
 
 * {
+  font-family: 'GT Regular';
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
 }
+
