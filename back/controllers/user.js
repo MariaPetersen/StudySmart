@@ -35,7 +35,6 @@ async function login(req, res, next) {
                 email: req.body.email
             }
         });
-        console.log(user);
         bcrypt.compare(req.body.password, user.password)
             .then(valid => {
                 if (!valid) {
