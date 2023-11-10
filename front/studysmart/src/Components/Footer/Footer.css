@@ -28,6 +28,7 @@ footer {
   display: flex;
   flex-direction: column;
   width: 40%;
+  gap: 10px;
   @media screen and (max-width: 1000px) {
     width: 100%;
     align-items: center;
