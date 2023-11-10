@@ -46,9 +46,7 @@ export default function login() {
                 required
               />
             </div>
-            <div>
-              <button className="login_button_form">LOG IN</button>
-            </div>
+            <button className="login_button_form">LOG IN</button>
           </form>
           <div className="login_form_line">
             <div>DON'T HAVE AN ACCOUNT ?</div>
