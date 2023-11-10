@@ -39,15 +39,16 @@ async function login(req, res, next) {
             .then(valid => {
                 if (!valid) {
                     res.status(401).json({ message: 'Paire login/mot de passe incorrecte' });
-                };
-                res.status(201).json({
-                    userId: user.id,
-                    token: jtw.sign(
-                        { userId: user.id },
-                        `${KEY}`,
-                        { expiresIn: '24h' }
-                    )
-                });
+                } else {
+                    res.status(201).json({
+                        userId: user.id,
+                        token: jtw.sign(
+                            { userId: user.id },
+                            `${KEY}`,
+                            { expiresIn: '24h' }
+                        )
+                    });
+                }
             }
             )
             .catch(error => res.status(500).json({ error }));
