@@ -20,7 +20,7 @@ export default function Signin() {
               <div className="first_name">
                 <span>FIRST NAME</span>
                 <input
-                  className="signup_put"
+                  className="signup_input"
                   type="text"
                   placeholder="First name"
                 />
