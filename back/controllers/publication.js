@@ -5,7 +5,6 @@ const prisma = new PrismaClient();
 
 async function createPublication(req, res, next) {
     try {
-        console.log("here");
         const { userId } = req.auth;
         const profile = await prisma.profile.findFirst({
             where: {
@@ -82,7 +81,6 @@ async function updatePublication(req, res, next) {
         if (publication.profile_id != profile.id) {
             res.status(403).json("User is not allowed to update post");
         }
-        console.log("here");
         const updatedPublication = await prisma.publication.update({
             where: {
                 id: parseInt(id)
