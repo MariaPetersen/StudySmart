@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = "mysql://334700_admin:studysmartadmin@mysql-studysmart.alwaysdata.net/studysmart_bdd"
+  url      = env("PRISMA_URL")
 }
 
 model Comments {
