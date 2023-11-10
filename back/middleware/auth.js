@@ -1,4 +1,7 @@
 const jtw = require('jsonwebtoken');
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 const KEY = process.env.RANDOM_KEY;
 
