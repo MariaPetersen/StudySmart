@@ -87,7 +87,8 @@
 .sous_text_login {
   text-align: left;
   font-family: "Saol Display";
-  @media screen and (max-width: 400px) {
+  text-align: left;
+  @media screen and (max-width: 1000px) {
     font-family: "Saol Display";
     text-align: center;
     font-weight: 100;
