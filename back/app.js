@@ -20,7 +20,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/user', userRoutes);
-app.use('/profile', auth, profileRoutes);
-app.use('/publication', auth, publicationRoutes);
+app.use('/profile', profileRoutes);
+app.use('/publications', publicationRoutes);
 
 module.exports = app;
