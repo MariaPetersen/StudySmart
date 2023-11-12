@@ -51,7 +51,7 @@ Notre Stack technique est composée de :
 
 ### Variable d'environnements
 
-??
+Les variables d'environnements sont stockés en local dans un fichier.env
 
 ### CI/CD
 
