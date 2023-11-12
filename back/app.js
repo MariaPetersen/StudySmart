@@ -21,6 +21,7 @@ app.use((req, res, next) => {
 
 app.use('/', (req, res, next) => {
     res.send("StudySmart");
+    next();
 });
 app.use('/user', userRoutes);
 app.use('/profile', profileRoutes);
