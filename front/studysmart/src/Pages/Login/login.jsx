@@ -1,26 +1,29 @@
-import React from "react";
-import "./Login.css";
-import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import React from 'react';
+import './Login.css';
+import { NavLink } from 'react-router-dom';
+import { useState } from 'react';
 export default function Login() {
-  const [email, setEmail] = useState("");
+  const [emailUser, setEmail] = useState('');
 
-  const [password, setPassword] = useState("");
+  const [passwordUser, setPassword] = useState('');
 
   const submitLogin = async (event) => {
     event.preventDefault();
-    console.log(email);
+    console.log(emailUser);
     try {
-      const response = await fetch("/user/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: {
-          email: JSON.stringify({ email }),
-          password: JSON.stringify({ password }),
-        },
-      });
+      const response = await fetch(
+        'https://studysmart-production.up.railway.app/user/login',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: {
+            'email': JSON.stringify({ emailUser }),
+            'password': JSON.stringify({ passwordUser }),
+          },
+        }
+      );
 
       if (response.ok) {
         // Gérer la réponse en cas de succès (par exemple, redirection ou affichage d'un message)
@@ -66,7 +69,7 @@ export default function Login() {
                 id="email"
                 placeholder=""
                 // pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                value={email}
+                value={emailUser}
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
@@ -78,7 +81,7 @@ export default function Login() {
                 type="password"
                 name="password"
                 placeholder=""
-                value={password}
+                value={passwordUser}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
@@ -88,8 +91,8 @@ export default function Login() {
           <div className="login_form_line">
             <div>DON'T HAVE AN ACCOUNT ?</div>
             <div>
-              {" "}
-              <NavLink to={"/signup"} className="login_form_signup">
+              {' '}
+              <NavLink to={'/signup'} className="login_form_signup">
                 SIGN UP
               </NavLink>
             </div>
