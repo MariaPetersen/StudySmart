@@ -19,10 +19,6 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use('/', (req, res, next) => {
-    res.send("StudySmart");
-    next();
-});
 app.use('/user', userRoutes);
 app.use('/profile', profileRoutes);
 app.use('/publications', publicationRoutes);
