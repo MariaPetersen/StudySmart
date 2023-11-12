@@ -1,5 +1,5 @@
 import React from 'react';
-import './Login.css';
+import './login.css';
 import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
 export default function Login() {
@@ -18,10 +18,10 @@ export default function Login() {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: {
-            'email': JSON.stringify({ emailUser }),
-            'password': JSON.stringify({ passwordUser }),
-          },
+          body: JSON.stringify({
+            email: emailUser,
+            password: passwordUser,
+          }),
         }
       );
 

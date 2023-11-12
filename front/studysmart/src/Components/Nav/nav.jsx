@@ -1,6 +1,6 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import "./Nav.css";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import './nav.css';
 
 export default function Nav() {
   return (
@@ -15,11 +15,12 @@ export default function Nav() {
       <div className="nav_box_box_auth">
         <i
           className="fa-solid fa-right-from-bracket"
-          style={{ color: "white" }}></i>
-        <NavLink to={"/"} className="nav_button_login">
+          style={{ color: 'white' }}
+        ></i>
+        <NavLink to={'/'} className="nav_button_login">
           login
         </NavLink>
-        <NavLink to={"/signup"} className="nav_button_signup">
+        <NavLink to={'/signup'} className="nav_button_signup">
           sign up
         </NavLink>
       </div>
