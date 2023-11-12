@@ -19,7 +19,7 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use('/', (rzq, res, next) => {
+app.use('/', (req, res, next) => {
     res.send("StudySmart");
 });
 app.use('/user', userRoutes);
