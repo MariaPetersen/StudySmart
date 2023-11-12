@@ -1,0 +1,702 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "StudiSmart API",
+    "description": "API documentation for StudiSmart"
+  },
+  "servers": [
+    {
+      "description": "StudiSmart Live API",
+      "url": "https://server/1.0.0"
+    }
+  ],
+  "paths": {
+    "/user/signup": {
+      "post": {
+        "tags": ["User"],
+        "summary": "Create a new user",
+        "operationId": "createUser",
+        "requestBody": {
+          "description": "User data",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "lastname": {
+                    "type": "string",
+                    "description": "Lastname of user"
+                  },
+                  "firstname": {
+                    "type": "string",
+                    "description": "Firstname of user"
+                  },
+                  "username": {
+                    "type": "string",
+                    "description": "Username of user"
+                  },
+                  "email": {
+                    "type": "string",
+                    "description": "Email of the new user"
+                  },
+                  "password": {
+                    "type": "string",
+                    "description": "Password of the new user"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "User was created"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/login": {
+      "post": {
+        "tags": ["User"],
+        "summary": "Login a user",
+        "operationId": "loginUser",
+        "requestBody": {
+          "description": "User data",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "description": "Email of the new user"
+                  },
+                  "password": {
+                    "type": "string",
+                    "description": "Password of the new user"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "userId": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "token": {
+                      "type": "string",
+                      "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEwLCJpYXQiOjE2OTk2MDMzODgsImV4cCI6MTY5OTY4OTc4OH0.sU-SVlT210KFbaff7AGsztoHavq5oMBKF0mnrtRPfUE"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/publications/{Id}": {
+      "get": {
+        "tags": ["Publication"],
+        "summary": "Retrieve a publication",
+        "operationId": "getublicationById",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "publicationId",
+            "description": "ID of the publication",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "publication retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "profile_id": {
+                      "type": "integer",
+                      "example": 2
+                    },
+                    "title": {
+                      "type": "string",
+                      "example": "Mon titre"
+                    },
+                    "description": {
+                      "type": "string",
+                      "example": "Mon article sur javascript"
+                    },
+                    "text": {
+                      "type": "string",
+                      "example": "Javascript est un langage de développement web"
+                    },
+                    "link": {
+                      "type": "string",
+                      "example": "http://images.com"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["Publication"],
+        "summary": "Update a publication",
+        "operationId": "publicationId",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "publicationId",
+            "description": "ID of the publication",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "publication data",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "description": "Title of the publication"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "description of the publication"
+                  },
+                  "text": {
+                    "type": "string",
+                    "description": "text of the publication"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "publications retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "example": 1
+                      },
+                      "profile_id": {
+                        "type": "integer",
+                        "example": 2
+                      },
+                      "title": {
+                        "type": "string",
+                        "example": "Mon titre"
+                      },
+                      "description": {
+                        "type": "string",
+                        "example": "Mon article sur javascript"
+                      },
+                      "text": {
+                        "type": "string",
+                        "example": "Javascript est un langage de développement web"
+                      },
+                      "link": {
+                        "type": "string",
+                        "example": "http://images.com"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Publication"],
+        "summary": "Delete a publication",
+        "operationId": "publicationId",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "publicationId",
+            "description": "ID of the publication",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "publications retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "example": 1
+                      },
+                      "profile_id": {
+                        "type": "integer",
+                        "example": 2
+                      },
+                      "title": {
+                        "type": "string",
+                        "example": "Mon titre"
+                      },
+                      "description": {
+                        "type": "string",
+                        "example": "Mon article sur javascript"
+                      },
+                      "text": {
+                        "type": "string",
+                        "example": "Javascript est un langage de développement web"
+                      },
+                      "link": {
+                        "type": "string",
+                        "example": "http://images.com"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/publications": {
+      "get": {
+        "tags": ["Publication"],
+        "summary": "Retrieve all publication",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "The number of items to skip before starting to collect the result set",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "The numbers of items to return",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "publications retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "example": 1
+                      },
+                      "profile_id": {
+                        "type": "integer",
+                        "example": 2
+                      },
+                      "title": {
+                        "type": "string",
+                        "example": "Mon titre"
+                      },
+                      "description": {
+                        "type": "string",
+                        "example": "Mon article sur javascript"
+                      },
+                      "text": {
+                        "type": "string",
+                        "example": "Javascript est un langage de développement web"
+                      },
+                      "link": {
+                        "type": "string",
+                        "example": "http://images.com"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Publication"],
+        "summary": "Create a publication",
+        "operationId": "",
+        "requestBody": {
+          "description": "publication data",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "description": "Title of the publication"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "description of the publication"
+                  },
+                  "text": {
+                    "type": "string",
+                    "description": "text of the publication"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "publications retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "profile_id": {
+                        "type": "integer",
+                        "example": 2
+                      },
+                      "title": {
+                        "type": "string",
+                        "example": "Mon titre"
+                      },
+                      "description": {
+                        "type": "string",
+                        "example": "Mon article sur javascript"
+                      },
+                      "text": {
+                        "type": "string",
+                        "example": "Javascript est un langage de développement web"
+                      },
+                      "link": {
+                        "type": "string",
+                        "example": "http://images.com"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/profile/{Id}": {
+      "get": {
+        "tags": ["profile"],
+        "summary": "Retrieve a profile",
+        "operationId": "getublicationById",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "profileId",
+            "description": "ID of the profile",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "profile retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "example": 3
+                    },
+                    "userId": {
+                      "type": "integer",
+                      "example": 2
+                    },
+                    "description": {
+                      "type": "string",
+                      "example": "description of my profile"
+                    },
+                    "user": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer",
+                          "example": 3
+                        },
+                        "userId": {
+                          "type": "integer",
+                          "example": 3
+                        },
+                        "description": {
+                          "type": "string",
+                          "description": "Description of the profile"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["profile"],
+        "summary": "Update a profile",
+        "operationId": "profileId",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "profileId",
+            "description": "ID of the profile",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "profile data",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "description": {
+                    "type": "string",
+                    "example": "description of my profile"
+                  },
+                  "lastname": {
+                    "type": "string",
+                    "example": "Dupont"
+                  },
+                  "firstname": {
+                    "type": "string",
+                    "example": "Remy"
+                  },
+                  "username": {
+                    "type": "string",
+                    "example": "popo"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "email@gmail.com"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "profiles retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "example": 3
+                      },
+                      "userId": {
+                        "type": "integer",
+                        "example": 2
+                      },
+                      "description": {
+                        "type": "string",
+                        "example": "description of my profile"
+                      },
+                      "user": {
+                        "type": "object",
+                        "properties": {
+                          "lastname": {
+                            "type": "string",
+                            "example": "Dupont"
+                          },
+                          "firstname": {
+                            "type": "string",
+                            "example": "Remy"
+                          },
+                          "username": {
+                            "type": "string",
+                            "example": "popo"
+                          },
+                          "email": {
+                            "type": "string",
+                            "example": "email@gmail.com"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["profile"],
+        "summary": "Delete a profile",
+        "operationId": "profileId",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "profileId",
+            "description": "ID of the profile",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "profiles retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "example": "changeMe"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/profile": {
+      "post": {
+        "tags": ["profile"],
+        "summary": "Create a profile",
+        "operationId": "",
+        "requestBody": {
+          "description": "profile data",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "description": {
+                    "type": "string",
+                    "description": "Description of the profile"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "profiles retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "example": 3
+                      },
+                      "userId": {
+                        "type": "integer",
+                        "example": 3
+                      },
+                      "description": {
+                        "type": "string",
+                        "description": "Description of the profile"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -10,17 +10,29 @@ export default function footer() {
             <p>NEW UPDATES</p>
           </div>
           <div className="section_one_left_register">
-            <input type="text" />
-            <button>SUBMIT</button>
+            <input
+              placeholder="ENTER YOUR EMAIL"
+              className="section_one_resgister_input"
+              type="email"
+              name="email"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+            />
+            <button className="section_one_resgister_button">SUBMIT</button>
           </div>
         </div>
-        <div className="section_one_left">
+        <div className="section_one_right">
           <div className="section_findus">
             <span>YOU CAN FIND US</span>
             <ul>
-              <li>studysmart@gmail.com</li>
+              <li>
+                <a
+                  className="section_findus_email"
+                  href="mailto:studysmart@gmail.com">
+                  studysmart@gmail.com
+                </a>
+              </li>
               <li>01 43 49 37 80</li>
-              <li>32 Rue de la Perche16e Arr</li>
+              <li>32 Rue de la Perche, 16e Arr</li>
             </ul>
           </div>
           <div className="section_help">
