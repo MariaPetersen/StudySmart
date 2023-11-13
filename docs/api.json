@@ -96,7 +96,7 @@
         },
         "responses": {
           "200": {
-            "description": "User created successfully",
+            "description": "User logged in successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -282,9 +282,29 @@
                   "items": {
                     "type": "object",
                     "properties": {
-                      "name": {
+                      "id": {
+                        "type": "integer",
+                        "example": 1
+                      },
+                      "profile_id": {
+                        "type": "integer",
+                        "example": 2
+                      },
+                      "title": {
                         "type": "string",
-                        "example": "changeMe"
+                        "example": "Mon titre"
+                      },
+                      "description": {
+                        "type": "string",
+                        "example": "Mon article sur javascript"
+                      },
+                      "text": {
+                        "type": "string",
+                        "example": "Javascript est un langage de développement web"
+                      },
+                      "link": {
+                        "type": "string",
+                        "example": "http://images.com"
                       }
                     }
                   }
@@ -452,9 +472,34 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "name": {
+                    "id": {
+                      "type": "integer",
+                      "example": 3
+                    },
+                    "userId": {
+                      "type": "integer",
+                      "example": 2
+                    },
+                    "description": {
                       "type": "string",
-                      "example": "changeMe"
+                      "example": "description of my profile"
+                    },
+                    "user": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer",
+                          "example": 3
+                        },
+                        "userId": {
+                          "type": "integer",
+                          "example": 3
+                        },
+                        "description": {
+                          "type": "string",
+                          "description": "Description of the profile"
+                        }
+                      }
                     }
                   }
                 }
@@ -462,13 +507,122 @@
             }
           }
         }
-      }
-    },
-    "/profile/all": {
-      "get": {
+      },
+      "put": {
         "tags": ["profile"],
-        "summary": "Retrieve all profile",
-        "operationId": "",
+        "summary": "Update a profile",
+        "operationId": "profileId",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "profileId",
+            "description": "ID of the profile",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "profile data",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "description": {
+                    "type": "string",
+                    "example": "description of my profile"
+                  },
+                  "lastname": {
+                    "type": "string",
+                    "example": "Dupont"
+                  },
+                  "firstname": {
+                    "type": "string",
+                    "example": "Remy"
+                  },
+                  "username": {
+                    "type": "string",
+                    "example": "popo"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "email@gmail.com"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "profiles retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "example": 3
+                      },
+                      "userId": {
+                        "type": "integer",
+                        "example": 2
+                      },
+                      "description": {
+                        "type": "string",
+                        "example": "description of my profile"
+                      },
+                      "user": {
+                        "type": "object",
+                        "properties": {
+                          "lastname": {
+                            "type": "string",
+                            "example": "Dupont"
+                          },
+                          "firstname": {
+                            "type": "string",
+                            "example": "Remy"
+                          },
+                          "username": {
+                            "type": "string",
+                            "example": "popo"
+                          },
+                          "email": {
+                            "type": "string",
+                            "example": "email@gmail.com"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["profile"],
+        "summary": "Delete a profile",
+        "operationId": "profileId",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "profileId",
+            "description": "ID of the profile",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "profiles retrieved successfully",
@@ -523,107 +677,17 @@
                   "items": {
                     "type": "object",
                     "properties": {
+                      "id": {
+                        "type": "integer",
+                        "example": 3
+                      },
                       "userId": {
                         "type": "integer",
                         "example": 3
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/profile/{id}": {
-      "put": {
-        "tags": ["profile"],
-        "summary": "Update a profile",
-        "operationId": "profileId",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "profileId",
-            "description": "ID of the profile",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "requestBody": {
-          "description": "profile data",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "title": {
-                    "type": "string",
-                    "description": "Title of the profile"
-                  },
-                  "content": {
-                    "type": "string",
-                    "description": "Content of the profile"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "profiles retrieved successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "name": {
+                      },
+                      "description": {
                         "type": "string",
-                        "example": "changeMe"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "delete": {
-        "tags": ["profile"],
-        "summary": "Delete a profile",
-        "operationId": "profileId",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "profileId",
-            "description": "ID of the profile",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "profiles retrieved successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "name": {
-                        "type": "string",
-                        "example": "changeMe"
+                        "description": "Description of the profile"
                       }
                     }
                   }

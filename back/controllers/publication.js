@@ -38,8 +38,9 @@ async function getOnePublication(req, res, next) {
         });
         if (!publication) {
             res.status(404).json("Couldn't find the publication");
+        } else {
+            res.status(200).json(publication);
         }
-        res.status(200).json(publication);
     } catch (error) {
         res.status(500).json(error);
     }
@@ -80,19 +81,20 @@ async function updatePublication(req, res, next) {
         });
         if (publication.profile_id != profile.id) {
             res.status(403).json("User is not allowed to update post");
+        } else {
+            const updatedPublication = await prisma.publication.update({
+                where: {
+                    id: parseInt(id)
+                },
+                data: {
+                    title: req.body.title,
+                    description: req.body.description,
+                    text: req.body.text,
+                    link: "http"
+                }
+            });
+            res.status(200).json(updatedPublication);
         }
-        const updatedPublication = await prisma.publication.update({
-            where: {
-                id: parseInt(id)
-            },
-            data: {
-                title: req.body.title,
-                description: req.body.description,
-                text: req.body.text,
-                link: "http"
-            }
-        });
-        res.status(200).json(updatedPublication);
     } catch (error) {
         res.status(500).json(error);
     }
@@ -119,16 +121,16 @@ async function deletePublication(req, res, next) {
         });
         if (!publication) {
             res.status(404).json("Couldn't find the publication");
-        }
-        if (publication.profile_id != profile.id) {
+        } else if (publication.profile_id != profile.id) {
             res.status(403).json("User is not allowed to delete post");
+        } else {
+            const deletePublication = await prisma.publication.delete({
+                where: {
+                    id: parseInt(id)
+                },
+            });
+            res.status(200).json(deletePublication);
         }
-        const deletePublication = await prisma.publication.delete({
-            where: {
-                id: parseInt(id)
-            },
-        });
-        res.status(200).json(deletePublication);
     } catch (error) {
         res.status(500).json(error);
     }

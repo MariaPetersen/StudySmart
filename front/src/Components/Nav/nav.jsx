@@ -6,7 +6,7 @@ export default function Nav() {
   return (
     <div className="nav">
       <div className="nav_box_profil">
-        <i class="fa-regular fa-user"></i>
+        <i className="fa-regular fa-user"></i>
         <NavLink className="nav_button_profil">profil</NavLink>
       </div>
       <div className="nav_box_title">
@@ -14,7 +14,7 @@ export default function Nav() {
       </div>
       <div className="nav_box_box_auth">
         <i
-          class="fa-solid fa-right-from-bracket"
+          className="fa-solid fa-right-from-bracket"
           style={{ color: "white" }}></i>
         <NavLink to={"/"} className="nav_button_login">
           login

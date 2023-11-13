@@ -18,8 +18,8 @@ model Comments {
 
 model Profile {
   id          Int    @id @default(autoincrement())
-  user_id     Int
-  gender      String @db.Text
+  user        User   @relation(fields: [user_id], references: [id])
+  user_id     Int    @unique
   description String @db.Text
 }
 
@@ -40,4 +40,5 @@ model User {
   email     String @unique(map: "email") 
   username  String @unique(map: "username") 
   password  String @db.Text
+  profile   Profile?
 }
