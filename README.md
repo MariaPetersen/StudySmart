@@ -1,6 +1,6 @@
 # StudiSmart
 
-1.0.0 
+1.0.1 
 
 ## Table of Contents
 1. [General Info](#general-info)
