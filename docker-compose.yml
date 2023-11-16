@@ -26,6 +26,7 @@ services:
       context: ./back
       args:
         - NODE_ENV=${NODE_ENV}
+      target: ${NODE_ENV}
     ports:
       - "${BACK_PORT}:${BACK_PORT}"
     depends_on:
@@ -40,6 +41,7 @@ services:
       context: ./front
       args:
         - NODE_ENV=${NODE_ENV}
+      target: ${NODE_ENV}
     ports:
       - "${FRONT_PORT}:${FRONT_PORT}"
     depends_on:

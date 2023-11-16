@@ -222,6 +222,22 @@ make reset
 
 Cette commande permet de supprimer toutes les données associées aux volumes et images Docker liées à votre application.
 
+## Mettre a jour la base de donnée
+Dans le terminal du back docker:
+~~~
+npx prisma db push
+~~~
+
+Cette commande permet de pousser les modification du schema.prisma sur la base de donnée 
+
+## Migrer la base de donnée
+Dans le terminal du back docker:
+~~~
+npx prisma migrate dev --create-only --name init
+~~~
+
+Cette commande permet de créer un fichier de migration
+
 ## Collaboration
 
 
