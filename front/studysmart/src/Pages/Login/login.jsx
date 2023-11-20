@@ -25,12 +25,26 @@ export default function login() {
 
           <form className="login_form" action="">
             <div className="input_container">
-              <p>EMAIL</p>
-              <input className="login_input" type="text" />
+              <label for="email">EMAIL</label>
+              <input
+                className="login_input"
+                type="email"
+                name="email"
+                id="email"
+                placeholder=""
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                required
+              />
             </div>
             <div className="input_container">
-              <p>PASSWORD</p>
-              <input className="login_input" type="text" />
+              <label for="password">PASSWORD</label>
+              <input
+                className="login_input"
+                type="password"
+                name="password"
+                placeholder=""
+                required
+              />
             </div>
             <div>
               <button className="login_button_form">LOG IN</button>

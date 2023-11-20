@@ -20,7 +20,7 @@ export default function Nav() {
           login
         </NavLink>
         <NavLink to={"/signup"} className="nav_button_signup">
-          sign up up
+          sign up
         </NavLink>
       </div>
     </div>
