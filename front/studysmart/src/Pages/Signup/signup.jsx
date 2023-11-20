@@ -4,7 +4,21 @@ export default function Signin() {
   return (
     <div id="signup">
       <div className="signup_left">
-        <h1>CREATE AN ACCOUNT</h1>
+        <h1
+          style={{
+            fontFamily: "GT Bold",
+            display: "flex",
+            justifyContent: "center",
+            flexDirection: "column",
+            gap: 2,
+            alignItems: "center",
+          }}
+        >
+          {" "}
+          <span>CREATE</span>
+          <span className="an">an</span>
+          <span>ACCOUNT</span>
+        </h1>
         <p>Create an account in order to post like other </p>
         <p> users and have a custum profile</p>
       </div>

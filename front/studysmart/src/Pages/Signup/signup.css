@@ -18,12 +18,20 @@
   padding: 0px 20px;
   @media screen and (max-width: 1000px) {
     display: flex;
+    margin:0px 0 20px;
     text-align: center;
     padding: 0;
     height: auto;
     width: 100%;
   }
 }
+
+.an{
+  font-family: "Saol Display";
+  font-size: 25px;
+
+}
+
 .signup_left h1 {
   font-family: "GT Bold";
   font-size: 80px;

@@ -199,7 +199,7 @@
   width: 100%;
   display: flex;
   padding: 20px 0px;
-  margin-top: 50px;
+  margin-top: 6rem;
   justify-content: space-between;
   @media screen and (max-width: 400px) {
     font-size: 10px;
