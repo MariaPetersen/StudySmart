@@ -25,6 +25,7 @@ export default function Signin() {
                   placeholder="First name"
                 />
               </div>
+              <div className="separator"></div>
               <div className="last_name">
                 <span>LAST NAME</span>
                 <input
