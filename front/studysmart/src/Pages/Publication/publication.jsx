@@ -1,6 +1,6 @@
 import React from "react";
 import "./publication.css";
-import bw from "../image/bw.png"
+import bw from "../image/bw.png";
 export default function publication() {
     return (
       <div id="content">
