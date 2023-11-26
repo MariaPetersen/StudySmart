@@ -21,7 +21,7 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use(fileupload());
+app.use(fileupload({ useTempFiles: true }));
 
 app.use('/user', userRoutes);
 app.use('/profile', profileRoutes);
