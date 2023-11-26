@@ -1,16 +1,6 @@
 const { PrismaClient } = require('@prisma/client');
-const cloudinary = require('cloudinary').v2;
+const cloudinary = require('./../services/cloudinary/cloudinary');
 const dotenv = require('dotenv');
-const { restart } = require('nodemon');
-
-dotenv.config;
-
-cloudinary.config({
-    cloud_name: process.env.CLOUDINARY_NAME,
-    api_key: process.env.CLOUDINARY_API_KEY,
-    api_secret: process.env.CLOUDINARY_API_SECRET
-});
-
 
 const prisma = new PrismaClient();
 
@@ -22,7 +12,7 @@ async function uploadImage(req, res, next) {
             return res.status(400).json({ error: "No File Selected" });
         }
 
-        const result = await cloudinary.uploader.upload(file.tempFilePath, {
+        const result = await cloudinary.uploader.upload(file.data, {
             public_id: `${Date.now()}`,
             resource_type: "auto",
             folder: "profileImages"
