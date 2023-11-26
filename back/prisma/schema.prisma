@@ -21,6 +21,7 @@ model Profile {
   user        User   @relation(fields: [user_id], references: [id])
   user_id     Int    @unique
   description String @db.Text
+  profilePicture ProfilePictures?
 }
 
 model Publication {
@@ -41,4 +42,13 @@ model User {
   username  String @unique(map: "username") 
   password  String @db.Text
   profile   Profile?
+}
+
+model ProfilePictures {
+  id        Int    @id @default(autoincrement())
+  remotePath String @db.Char(255)
+  profile   Profile @relation(fields: [profile_id], references: [id])
+  profile_id Int @unique
+  publicId String @unique
+
 }
