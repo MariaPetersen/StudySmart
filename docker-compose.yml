@@ -1,0 +1,51 @@
+version: '3'
+services:
+  db:
+    image: mariadb:10.6
+    restart: always
+    environment:
+      MYSQL_ROOT_USER: "${MYSQL_ROOT_USER}"
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+      MYSQL_DATABASE: "${MYSQL_DATABASE}"
+      MYSQL_USER: "${MYSQL_PASSWORD}"
+      MYSQL_PASSWORD: "${MYSQL_DATABASE}"
+    ports:
+      - "${MYSQL_PORT}:${MYSQL_PORT}"
+
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - "${PHPMYADMIN_PORT}:80"
+    depends_on:
+      - db
+
+  back:
+    restart: unless-stopped
+    build:
+      context: ./back
+      args:
+        - NODE_ENV=${NODE_ENV}
+      target: ${NODE_ENV}
+    ports:
+      - "${BACK_PORT}:${BACK_PORT}"
+    depends_on:
+      - db
+    volumes:
+      - ./back:/app/back
+    env_file: .env
+
+  front:
+    restart: unless-stopped
+    build:
+      context: ./front
+      args:
+        - NODE_ENV=${NODE_ENV}
+      target: ${NODE_ENV}
+    ports:
+      - "${FRONT_PORT}:${FRONT_PORT}"
+    depends_on:
+      - back
+    volumes:
+      - ./front:/app/front
+    env_file: .env
