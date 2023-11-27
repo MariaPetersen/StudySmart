@@ -72,10 +72,12 @@
 }
 
 .profile-posts-title {
+    display: flex;
+    justify-content: center;
     color: white;
     font-family: 'GT Medium';
-    font-size: 24px;
-    padding: 5px 20px 25px 25px;
+    font-size: 32px;
+    padding: 5px 0px 25px 0px;
 }
 
 .profile-picture-container {
@@ -95,4 +97,28 @@
     width: 120px;
     height: 120px;
     border-radius: 100px;
+}
+
+.profile-posts-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex: 200px;
+    padding-bottom: 40px;
+}
+
+.post-container {
+    padding: 20px;
+    border: solid 3px white;
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding-bottom: 10px;
+}
+
+.post-content {
+    padding-bottom: 10px;
 }

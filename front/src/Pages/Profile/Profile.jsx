@@ -17,7 +17,7 @@ export default function Profile() {
             <p className='profile-title'>YOUR DETAILS</p>
 
             <div className="profile-picture-container">
-                <img className="profile-picture-output" src="https://cdn.pixabay.com/photo/2017/08/06/21/01/louvre-2596278_960_720.jpg" id="output" />
+                <img className="profile-picture-output" src="./image-post-placeholder.png" id="output" />
                 <label class="profile-button" htmlFor="file">
                     <span>EDIT PROFILE PICTURE</span>
                 </label>
@@ -75,8 +75,29 @@ export default function Profile() {
           <p className='profile-posts-title'>YOUR POSTS</p>
 
           <div className='profile-posts-container'>
-            <div>
-                
+            <div className='post-container'>
+              <div className='post-header'>
+                <p>USERNAME</p>
+                <p>POST DATE</p>
+              </div>
+                <p className='post-content'>POST CONTENT</p>
+                <img className='post-image' src="./image-post-placeholder.png" alt="" />
+            </div>
+            <div className='post-container'>
+              <div className='post-header'>
+                <p>USERNAME</p>
+                <p>POST DATE</p>
+              </div>
+                <p className='post-content'>POST CONTENT</p>
+                <img className='post-image' src="./image-post-placeholder.png" alt="" />
+            </div>
+            <div className='post-container'>
+              <div className='post-header'>
+                <p>USERNAME</p>
+                <p>POST DATE</p>
+              </div>
+                <p className='post-content'>POST CONTENT</p>
+                <img className='post-image' src="./image-post-placeholder.png" alt="" />
             </div>
           </div>
         </div>
