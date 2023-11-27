@@ -500,6 +500,15 @@
                           "description": "Description of the profile"
                         }
                       }
+                    },
+                    "profilePicture": {
+                      "type": "object",
+                      "properties": {
+                        "remotePath": {
+                          "type": "integer",
+                          "example": "https://res.cloudinary.com/dns9y8jad/image/upload/v1701018696/profileImages/1701018694895.jpg"
+                        }
+                      }
                     }
                   }
                 }
@@ -688,6 +697,100 @@
                       "description": {
                         "type": "string",
                         "description": "Description of the profile"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/images/:id": {
+      "post": {
+        "tags": ["images"],
+        "summary": "Upload a profile picture",
+        "operationId": "",
+        "requestBody": {
+          "description": "profile picture",
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "image": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "profile picture retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "example": 3
+                      },
+                      "remotePath": {
+                        "type": "string",
+                        "example": "https://res.cloudinary.com/dns9y8jad/image/upload/v1701018696/profileImages/1701018694895.jpg"
+                      },
+                      "profile_id": {
+                        "type": "integer",
+                        "example": 3
+                      },
+                      "publicId": {
+                        "type": "string",
+                        "example": "profileImages/1701018694895"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["images"],
+        "summary": "Delete a profile picture",
+        "operationId": "profileId",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "profileId",
+            "description": "ID of the profile",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "profiles retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "result": {
+                        "type": "string",
+                        "example": "ok"
                       }
                     }
                   }
