@@ -1,9 +1,7 @@
 const bcrypt = require('bcrypt');
 const jtw = require('jsonwebtoken');
 const dotenv = require("dotenv");
-const { PrismaClient } = require('@prisma/client');
-
-const prisma = new PrismaClient();
+const prisma = require("./../prisma/prisma");
 
 dotenv.config;
 
