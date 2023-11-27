@@ -18,10 +18,10 @@ export default function Login() {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: {
-            'email': JSON.stringify({ emailUser }),
-            'password': JSON.stringify({ passwordUser }),
-          },
+          body: JSON.stringify({
+            email: emailUser,
+            password: passwordUser,
+          }),
         }
       );
 
