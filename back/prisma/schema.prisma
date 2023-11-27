@@ -1,10 +1,12 @@
+
 generator client {
   provider = "prisma-client-js"
+  
 }
 
 datasource db {
   provider = "mysql"
-  url      = env("PRISMA_URL")
+  url      = "mysql://root:root@db:3306/db"
 }
 
 model Comments {
