@@ -75,7 +75,9 @@ export default function Profile() {
           <p className='profile-posts-title'>YOUR POSTS</p>
 
           <div className='profile-posts-container'>
-
+            <div>
+                
+            </div>
           </div>
         </div>
     </div>
