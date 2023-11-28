@@ -66,10 +66,10 @@ export default function Signin() {
               />
             </div>
             <div>
-              <button className="login_button_form">LOG IN</button>
+              <button className="signup_button_form">SIGN UP</button>
             </div>
           </form>
-          <div className="login_form_line">
+          <div className="signup_form_line">
             <div>DON'T HAVE AN ACCOUNT ?</div>
             <div>SIGN UP</div>
           </div>
