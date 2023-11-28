@@ -1,12 +1,84 @@
-import React from 'react'
-import './Profile.css'
+import React, { useState, useEffect } from 'react';
+import { redirect } from 'react-router-dom';
+import './Profile.css';
 
 var loadFile = function (e) {
-    var image = document.getElementById("output");
-    image.src = URL.createObjectURL(e.target.files[0]);
+  var image = document.getElementById('output');
+  image.src = URL.createObjectURL(e.target.files[0]);
 };
-  
+
 export default function Profile() {
+  const [userProfile, setUserProfile] = useState({
+    email: '',
+    password: '',
+    firstname: '',
+    lastname: '',
+    posts: [],
+  });
+
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
+
+  useEffect(() => {
+    // Fetch user profile data when the component mounts
+    fetchUserProfile();
+  }, []);
+
+  const fetchUserProfile = async () => {
+    try {
+      // Check if the user is authenticated
+      if (!isAuthenticated) {
+        // Redirect the user to the login page or any other page
+        return;
+      }
+
+      const response = await fetch('https://studysmart-production.up.railway.app/profile/{userId}', {
+        method: 'GET',
+        headers: {
+          // Add any headers if needed, like authentication tokens
+        },
+      });
+
+      if (response.ok) {
+        const profileData = await response.json();
+        setUserProfile(profileData);
+      } else {
+        console.error('Failed to fetch user profile');
+      }
+    } catch (error) {
+      console.error('Error fetching user profile:', error);
+    }
+  };
+
+  if (!isAuthenticated) {
+    return <redirect to="/login" />;
+  }
+
+  const handleSaveChanges = async () => {
+    try {
+      const response = await fetch('https://studysmart-production.up.railway.app/profile/{userId}', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          // Add any headers if needed, like authentication tokens
+        },
+        body: JSON.stringify({
+          firstname: userProfile.firstname,
+          lastname: userProfile.lastname,
+          email: userProfile.email,
+          password: userProfile.password,
+        }),
+      });
+
+      if (response.ok) {
+        console.log('User profile updated successfully');
+      } else {
+        // Handle error
+        console.error('Failed to update user profile');
+      }
+    } catch (error) {
+      console.error('Error updating user profile:', error);
+    }
+  };
   return (
     <div>
         <div className='title'>
@@ -35,6 +107,8 @@ export default function Profile() {
                 placeholder=""
                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                 required
+                value={userProfile.email}
+                onChange={(e) => setUserProfile({ ...userProfile, email: e.target.value })}
               />
             </div>
             <div className='input'>
@@ -45,6 +119,8 @@ export default function Profile() {
                 name="password"
                 placeholder=""
                 required
+                value={userProfile.password}
+                onChange={(e) => setUserProfile({ ...userProfile, password: e.target.value })}
               />
             </div>
             <div className='input'>
@@ -54,6 +130,8 @@ export default function Profile() {
                 name="firstname"
                 placeholder=""
                 required
+                value={userProfile.firstname}
+                onChange={(e) => setUserProfile({ ...userProfile, firstname: e.target.value })}
               />
             </div>
             <div className='input'>
@@ -63,10 +141,12 @@ export default function Profile() {
                 name="lastname"
                 placeholder=""
                 required
+                value={userProfile.lastname}
+                onChange={(e) => setUserProfile({ ...userProfile, lastname: e.target.value })}
               />
             </div>
             <div>
-                <button type="button" className='profile-button'>SAVE CHANGES</button>
+                <button type="button" className='profile-button' onClick={handleSaveChanges}>SAVE CHANGES</button>
             </div>
           </form>
 
@@ -85,16 +165,16 @@ export default function Profile() {
             </div>
             <div className='post-container'>
               <div className='post-header'>
-                <p>USERNAME</p>
-                <p>POST DATE</p>
+                <p className='post-title'>USERNAME</p>
+                <p className='post-title'>POST DATE</p>
               </div>
                 <p className='post-content'>POST CONTENT</p>
                 <img className='post-image' src="./image-post-placeholder.png" alt="" />
             </div>
             <div className='post-container'>
               <div className='post-header'>
-                <p>USERNAME</p>
-                <p>POST DATE</p>
+                <p className='post-title'>USERNAME</p>
+                <p className='post-title'>POST DATE</p>
               </div>
                 <p className='post-content'>POST CONTENT</p>
                 <img className='post-image' src="./image-post-placeholder.png" alt="" />
