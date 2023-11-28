@@ -1,24 +1,25 @@
 const dotenv = require("dotenv");
-const { PrismaClient } = require('@prisma/client');
-
-const prisma = new PrismaClient();
+const prisma = require("./../prisma/prisma");
+const publicationDatabase = require("./../services/database/publicationDatabase");
+const profileDatabase = require("./../services/database/profileDatabase");
+const userDatabase = require("./../services/database/userDatabase");
 
 async function createPublication(req, res, next) {
     try {
         const { userId } = req.auth;
-        const profile = await prisma.profile.findFirst({
+        const profile = await profileDatabase.getOneProfile({
             where: {
                 user_id: userId
             }
         });
-        const { title, description, text } = req.body;
-        const publication = await prisma.publication.create({
+        const { title, description, text, link } = req.body;
+        const publication = await publicationDatabase.createPublication({
             data: {
                 profile_id: profile.id,
                 title: title,
                 description: description,
                 text: text,
-                link: "http"
+                link: link
             }
         });
         res.status(200).json(publication);
@@ -31,12 +32,13 @@ async function getOnePublication(req, res, next) {
     try {
         const { id } = req.params;
         const publicationId = parseInt(id);
-        const publication = await prisma.publication.findFirst({
+        const publication = await publicationDatabase.getOnePublication({
             where: {
                 id: publicationId
             }
         });
-        const profile = await prisma.profile.findFirst({
+        const profileId = publication.profile_id;
+        const profile = await profileDatabase.getOneProfile({
             where: {
                 id: parseInt(publication.profile_id)
             },
@@ -68,8 +70,7 @@ async function getAllPublications(req, res, next) {
     try {
         const offset = req.query?.offset;
         const limit = req.query?.limit;
-        console.log("here");
-        const publications = await prisma.publication.findMany({
+        const publications = publicationDatabase.getAllPublications({
             skip: offset ? parseInt(offset) : 0,
             take: limit ? parseInt(limit) : 100,
             include: {
@@ -97,17 +98,17 @@ async function updatePublication(req, res, next) {
     try {
         const { userId } = req.auth;
         const { id } = req.params;
-        const user = await prisma.user.findUnique({
+        const user = await userDatabase.getOneUser({
             where: {
                 id: parseInt(userId)
             }
         });
-        const profile = await prisma.profile.findFirst({
+        const profile = await profileDatabase.getOneProfile({
             where: {
                 user_id: parseInt(user.id)
             }
         });
-        const publication = await prisma.publication.findUnique({
+        const publication = await publicationDatabase.getOnePublication({
             where: {
                 id: parseInt(id)
             }
@@ -115,7 +116,7 @@ async function updatePublication(req, res, next) {
         if (publication.profile_id != profile.id) {
             res.status(403).json("User is not allowed to update post");
         } else {
-            const updatedPublication = await prisma.publication.update({
+            const updatedPublication = publicationDatabase.updatePublication({
                 where: {
                     id: parseInt(id)
                 },
@@ -137,17 +138,17 @@ async function deletePublication(req, res, next) {
     try {
         const { userId } = req.auth;
         const { id } = req.params;
-        const user = await prisma.user.findUnique({
+        const user = userDatabase.getOneUser({
             where: {
                 id: parseInt(userId)
             }
         });
-        const profile = await prisma.profile.findFirst({
+        const profile = profileDatabase.getOneProfile({
             where: {
                 user_id: parseInt(user.id)
             }
         });
-        const publication = await prisma.publication.findUnique({
+        const publication = publicationDatabase.getOnePublication({
             where: {
                 id: parseInt(id)
             }
@@ -157,7 +158,7 @@ async function deletePublication(req, res, next) {
         } else if (publication.profile_id != profile.id) {
             res.status(403).json("User is not allowed to delete post");
         } else {
-            const deletePublication = await prisma.publication.delete({
+            const deletePublication = publicationDatabase.deletePublication({
                 where: {
                     id: parseInt(id)
                 },
