@@ -5,6 +5,10 @@
   padding: 20px;
   margin-bottom: 5px;
   color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 .first_box_card {
   width: 100%;
