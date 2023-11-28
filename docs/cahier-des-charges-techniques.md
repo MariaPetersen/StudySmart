@@ -53,9 +53,7 @@ Les variables d'environnements sont stockés en local dans un fichier .env
 
 ### CI/CD
 
-### Linter
-
-??
+Mise en place d'une intégration continue avec le lancement de tests de l'api dès un push sur le dépôt distant et un déploiement continu avec le redéploiement du back dès qu'il est merge sur master
 
 ### Git
 
@@ -100,7 +98,7 @@ Nos possibilités étaient :
 
 ## Schéma de l'application
 
-![Texte alternatif](architecture.png "Schéma de l'application")
+![Texte alternatif](Architecture-StudySmart.png "Schéma de l'application")
 
 ## Schéma de la base de données
 
