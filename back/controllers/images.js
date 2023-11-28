@@ -1,8 +1,6 @@
-const { PrismaClient } = require('@prisma/client');
+const prisma = require("./../prisma/prisma");
 const cloudinary = require('./../services/cloudinary/cloudinary');
 const dotenv = require('dotenv');
-
-const prisma = new PrismaClient();
 
 async function uploadImage(req, res, next) {
     const file = req.files.image;
