@@ -1,12 +1,14 @@
 import React from 'react';
 import './login.css';
-import { NavLink } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 import { useState } from 'react';
+import { UserContext } from '../../Context/Usercontext';
+import { useContext } from 'react';
 export default function Login() {
   const [emailUser, setEmail] = useState('');
-
+  const { value } = useContext(UserContext);
   const [passwordUser, setPassword] = useState('');
-
+  const navigate = useNavigate();
   const submitLogin = async (event) => {
     event.preventDefault();
     console.log(emailUser);
@@ -26,8 +28,16 @@ export default function Login() {
       );
 
       if (response.ok) {
+        const userData = await response.json();
         // Gérer la réponse en cas de succès (par exemple, redirection ou affichage d'un message)
-        console.log(response);
+        if (userData) {
+          // Stockez le token de l'utilisateur dans le localStorage
+          value.login(userData);
+          navigate('/home');
+        } else {
+          // le cas où le token n'est pas retourné
+          console.error('Token non reçu');
+        }
       } else {
         // Gérer les erreurs de réponse
         console.log(response);
