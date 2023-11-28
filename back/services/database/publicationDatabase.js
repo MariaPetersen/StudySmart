@@ -1,3 +1,4 @@
+const prisma = require('../../prisma/prisma');
 
 async function createPublication(query) {
     return prisma.publication.create(query);
