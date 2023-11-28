@@ -32,7 +32,6 @@
   flex-direction: column;
   width: 100%;
   padding-left: 100px;
-
   @media screen and (max-width: 1000px) {
     justify-content: center;
     align-items: center;
@@ -181,7 +180,6 @@
   background-color: #e97550;
   border: none;
   border-radius: 5px;
-  max-width: 80px;
 }
 
 .login_button_form:hover {
