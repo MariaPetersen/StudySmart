@@ -77,8 +77,8 @@ export default function Profile() {
           <div className='profile-posts-container'>
             <div className='post-container'>
               <div className='post-header'>
-                <p>USERNAME</p>
-                <p>POST DATE</p>
+                <p className='post-title'>USERNAME</p>
+                <p className='post-title'>POST DATE</p>
               </div>
                 <p className='post-content'>POST CONTENT</p>
                 <img className='post-image' src="./image-post-placeholder.png" alt="" />
