@@ -1,0 +1,42 @@
+#home {
+  border-top: 3px solid white;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.publications_container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.title_container {
+  width: 70%;
+  height: auto;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  font-size: 80px;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.title_box {
+  width: 100%;
+  padding: 20px;
+}
+.title_box.one {
+  border-bottom: 2px solid white;
+  text-align: end;
+}
+.title_box.two {
+  border-bottom: 2px solid white;
+}
+.title_box.three {
+  text-align: end;
+}
