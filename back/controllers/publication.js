@@ -34,7 +34,11 @@ async function createPublication(req, res, next) {
                 }
             }
         });
-        sendMail(userId);
+        try {
+            sendMail(userId);
+        } catch (error) {
+            console.log(error);
+        }
         res.status(200).json(publication);
     } catch (error) {
         res.status(500).json(error);
