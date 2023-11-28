@@ -12,14 +12,14 @@ async function createPublication(req, res, next) {
                 user_id: userId
             }
         });
-        const { title, description, text } = req.body;
+        const { title, description, text, link } = req.body;
         const publication = await publicationDatabase.createPublication({
             data: {
                 profile_id: profile.id,
                 title: title,
                 description: description,
                 text: text,
-                link: "http"
+                link: link
             }
         });
         res.status(200).json(publication);
