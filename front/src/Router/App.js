@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { UserContextProvider } from "../Context/Usercontext";
 import Signup from "../Pages/Signup/signup";
 import Login from "../Pages/Login/login";
 import Publication from "../Pages/Publication/publication";
@@ -9,6 +10,7 @@ import Footer from "../Components/Footer/footer";
 function App() {
   return (
     <BrowserRouter>
+      <UserContextProvider>
       <Nav />
       <Routes>
         <Route path="/" element={<Login />} />
@@ -18,7 +20,7 @@ function App() {
       </Routes>
       <Footer />
       </UserContextProvider>
-    </BrowserRouter>
+      </BrowserRouter>
   );
 }
 
