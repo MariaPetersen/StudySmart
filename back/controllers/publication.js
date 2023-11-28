@@ -36,10 +36,28 @@ async function getOnePublication(req, res, next) {
                 id: publicationId
             }
         });
+        const profile = await prisma.profile.findFirst({
+            where: {
+                id: parseInt(publication.profile_id)
+            },
+            include: {
+                user: {
+                    select: {
+                        lastname: true,
+                        firstname: true,
+                        username: true,
+                    }
+                }
+            }
+        });
+        const publicationWithProfile = {
+            ...publication,
+            ...profile
+        };
         if (!publication) {
             res.status(404).json("Couldn't find the publication");
         } else {
-            res.status(200).json(publication);
+            res.status(200).json(publicationWithProfile);
         }
     } catch (error) {
         res.status(500).json(error);

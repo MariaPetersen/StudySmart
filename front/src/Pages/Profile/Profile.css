@@ -1,0 +1,187 @@
+.title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 125px 0px 125px 0px;
+}
+
+.top-title {
+    font-family: "Saol Display";
+    color: black;
+    font-size: 24px;
+    @media screen and (max-width: 800px) {
+        font-size: 20px;
+    }
+    @media screen and (max-width: 472px) {
+        font-size: 16px;
+    }
+}
+
+.sub-title {
+    font-family: 'GT Bold';
+    color: white;
+    font-size: 78px;
+    @media screen and (max-width: 800px) {
+        font-size: 48px;
+    }
+    @media screen and (max-width: 472px) {
+        font-size: 36px;
+    }
+}
+
+.profile-container {
+    background-color: #3E2E27;
+    margin: 0px 15px 40px 15px;
+    border-radius: 5px;
+    @media screen and (max-width: 550px) {
+        margin: 0px 5px 40px 5px;
+    }
+}
+
+.profile-title {
+    display: flex;
+    justify-content: center;
+    padding: 30px 0 30px 0;
+    color: white;
+    font-family: 'GT Bold';
+    font-size: 48px;
+    @media screen and (max-width: 800px) {
+        font-size: 36px;
+    }
+    @media screen and (max-width: 472px) {
+        font-size: 24px;
+        margin: 0 10px 0px 10px;
+    }
+}
+
+.input-container {
+    color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+    width: 25vw;
+    @media screen and (max-width: 1200px) {
+        width: 55vw;
+    }
+}
+
+.login-input {
+    padding: 10px;
+    color: #C4B84E;
+    background-color: #3E2E27;
+    border: solid 1px black;
+    border-radius: 3px;
+    @media screen and (max-width: 472px) {
+        padding: 7.5px;
+    }
+}
+
+.profile-button {
+    background-color: #C4B84E;
+    font-family: 'GT Medium';
+    height: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    @media screen and (max-width: 800px) {
+        font-size: 16px;
+    }
+    @media screen and (max-width: 472px) {
+        font-size: 12px;
+    }
+}
+
+.profile-border {
+    border: 1px solid white;
+    margin: 20px 25px;
+}
+
+.profile-posts-title {
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-family: 'GT Medium';
+    font-size: 32px;
+    padding: 5px 0px 25px 0px;
+}
+
+.profile-picture-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 30px;
+    @media screen and (max-width: 500px) {
+        margin: 0 10px 30px 10px;
+    }
+}
+
+.profile-picture-input {
+    display: none;
+}
+
+.profile-picture-output {
+    object-fit: cover;
+    width: 120px;
+    height: 120px;
+    border-radius: 100px;
+    @media screen and (max-width: 800px) {
+        height: 90px;
+        width: 90px;
+    }
+    @media screen and (max-width: 472px) {
+        height: 60px;
+        width: 60px;
+    }
+}
+
+.profile-posts-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex: 200px;
+    padding-bottom: 40px;
+}
+
+.post-container {
+    padding: 20px;
+    border: solid 3px white;
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding-bottom: 10px;
+}
+
+.post-content {
+    padding-bottom: 10px;
+    @media screen and (max-width: 550px) {
+        font-size: 12px;
+    }
+}
+
+.post-image {
+    @media screen and (max-width: 500px) {
+        width: 250px;
+    }
+    @media screen and (max-width: 420px) {
+        width: 200px;
+    }
+}
+
+.post-title {
+    @media screen and (max-width: 550px) {
+        font-size: 14px;
+    }
+}
