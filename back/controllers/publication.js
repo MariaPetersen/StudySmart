@@ -1,5 +1,3 @@
-const dotenv = require("dotenv");
-const prisma = require("./../prisma/prisma");
 const publicationDatabase = require("./../services/database/publicationDatabase");
 const profileDatabase = require("./../services/database/profileDatabase");
 const userDatabase = require("./../services/database/userDatabase");
@@ -20,6 +18,19 @@ async function createPublication(req, res, next) {
                 description: description,
                 text: text,
                 link: link
+            },
+            include: {
+                profile: {
+                    include: {
+                        user: {
+                            select: {
+                                lastname: true,
+                                firstname: true,
+                                username: true
+                            }
+                        }
+                    }
+                }
             }
         });
         res.status(200).json(publication);
@@ -70,7 +81,7 @@ async function getAllPublications(req, res, next) {
     try {
         const offset = req.query?.offset;
         const limit = req.query?.limit;
-        const publications = publicationDatabase.getAllPublications({
+        const publications = await publicationDatabase.getAllPublications({
             skip: offset ? parseInt(offset) : 0,
             take: limit ? parseInt(limit) : 100,
             include: {
