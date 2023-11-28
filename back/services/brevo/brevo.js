@@ -2,7 +2,7 @@ const auth = require("../../middleware/auth");
 const express = require("express");
 const router = express.Router();
 
-function Mail(email, username) {
+function mail(email, username) {
   var SibApiV3Sdk = require("sib-api-v3-sdk");
   var defaultClient = SibApiV3Sdk.ApiClient.instance;
 
@@ -40,5 +40,5 @@ function Mail(email, username) {
   );
 }
 module.exports = {
-  Mail,
+  mail
 };
