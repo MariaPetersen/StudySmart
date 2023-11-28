@@ -37,7 +37,8 @@ async function getOnePublication(req, res, next) {
                 id: publicationId
             }
         });
-        const profile = await prisma.profile.findFirst({
+        const profileId = publication.profile_id;
+        const profile = await profileDatabase.getOneProfile({
             where: {
                 id: parseInt(publication.profile_id)
             },
