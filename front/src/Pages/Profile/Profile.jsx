@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
+import { UserContext } from '../../Context/Usercontext';
+import { useContext } from 'react';
 import './Profile.css';
 
 var loadFile = function (e) {
@@ -15,32 +17,33 @@ export default function Profile() {
     lastname: '',
     posts: [],
   });
+  const { value } = useContext(UserContext);
 
   const [isAuthenticated, setIsAuthenticated] = useState(true);
 
   useEffect(() => {
-    // Fetch user profile data when the component mounts
-    fetchUserProfile();
-  }, []);
-
+    if (value.currentUser){
+      fetchUserProfile();
+    }
+  }, [value]);
+console.log(value)
   const fetchUserProfile = async () => {
     try {
-      // Check if the user is authenticated
       if (!isAuthenticated) {
-        // Redirect the user to the login page or any other page
         return;
       }
-
-      const response = await fetch('https://studysmart-production.up.railway.app/profile/{userId}', {
+      
+      const response = await fetch(`https://studysmart-production.up.railway.app/profile/${value.currentUser?.token.userId}`, {
         method: 'GET',
         headers: {
-          // Add any headers if needed, like authentication tokens
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${value.currentUser?.token.token}`,
         },
       });
 
       if (response.ok) {
         const profileData = await response.json();
-        setUserProfile(profileData);
+        setUserProfile(profileData.user);
       } else {
         console.error('Failed to fetch user profile');
       }
@@ -50,16 +53,16 @@ export default function Profile() {
   };
 
   if (!isAuthenticated) {
-    return <redirect to="/login" />;
+    return <Navigate to="/login" />;
   }
 
   const handleSaveChanges = async () => {
     try {
-      const response = await fetch('https://studysmart-production.up.railway.app/profile/{userId}', {
+      const response = await fetch(`https://studysmart-production.up.railway.app/profile/${value.currentUser?.token.userId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
-          // Add any headers if needed, like authentication tokens
+          'Authorization': `Bearer ${value.currentUser?.token.token}`,
         },
         body: JSON.stringify({
           firstname: userProfile.firstname,
@@ -68,17 +71,17 @@ export default function Profile() {
           password: userProfile.password,
         }),
       });
-
+  
       if (response.ok) {
         console.log('User profile updated successfully');
       } else {
-        // Handle error
         console.error('Failed to update user profile');
       }
     } catch (error) {
       console.error('Error updating user profile:', error);
     }
   };
+
   return (
     <div>
         <div className='title'>
@@ -155,22 +158,6 @@ export default function Profile() {
           <p className='profile-posts-title'>YOUR POSTS</p>
 
           <div className='profile-posts-container'>
-            <div className='post-container'>
-              <div className='post-header'>
-                <p className='post-title'>USERNAME</p>
-                <p className='post-title'>POST DATE</p>
-              </div>
-                <p className='post-content'>POST CONTENT</p>
-                <img className='post-image' src="./image-post-placeholder.png" alt="" />
-            </div>
-            <div className='post-container'>
-              <div className='post-header'>
-                <p className='post-title'>USERNAME</p>
-                <p className='post-title'>POST DATE</p>
-              </div>
-                <p className='post-content'>POST CONTENT</p>
-                <img className='post-image' src="./image-post-placeholder.png" alt="" />
-            </div>
             <div className='post-container'>
               <div className='post-header'>
                 <p className='post-title'>USERNAME</p>
