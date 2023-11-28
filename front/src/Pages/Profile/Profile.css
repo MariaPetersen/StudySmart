@@ -10,18 +10,33 @@
     font-family: "Saol Display";
     color: black;
     font-size: 24px;
+    @media screen and (max-width: 800px) {
+        font-size: 20px;
+    }
+    @media screen and (max-width: 472px) {
+        font-size: 16px;
+    }
 }
 
 .sub-title {
     font-family: 'GT Bold';
     color: white;
     font-size: 78px;
+    @media screen and (max-width: 800px) {
+        font-size: 48px;
+    }
+    @media screen and (max-width: 472px) {
+        font-size: 36px;
+    }
 }
 
 .profile-container {
     background-color: #3E2E27;
     margin: 0px 15px 40px 15px;
     border-radius: 5px;
+    @media screen and (max-width: 550px) {
+        margin: 0px 5px 40px 5px;
+    }
 }
 
 .profile-title {
@@ -31,6 +46,13 @@
     color: white;
     font-family: 'GT Bold';
     font-size: 48px;
+    @media screen and (max-width: 800px) {
+        font-size: 36px;
+    }
+    @media screen and (max-width: 472px) {
+        font-size: 24px;
+        margin: 0 10px 0px 10px;
+    }
 }
 
 .input-container {
@@ -46,6 +68,9 @@
     gap: 10px;
     margin-bottom: 20px;
     width: 25vw;
+    @media screen and (max-width: 1200px) {
+        width: 55vw;
+    }
 }
 
 .login-input {
@@ -54,6 +79,9 @@
     background-color: #3E2E27;
     border: solid 1px black;
     border-radius: 3px;
+    @media screen and (max-width: 472px) {
+        padding: 7.5px;
+    }
 }
 
 .profile-button {
@@ -64,6 +92,12 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    @media screen and (max-width: 800px) {
+        font-size: 16px;
+    }
+    @media screen and (max-width: 472px) {
+        font-size: 12px;
+    }
 }
 
 .profile-border {
@@ -86,6 +120,9 @@
     align-items: center;
     gap: 30px;
     margin-bottom: 30px;
+    @media screen and (max-width: 500px) {
+        margin: 0 10px 30px 10px;
+    }
 }
 
 .profile-picture-input {
@@ -97,6 +134,14 @@
     width: 120px;
     height: 120px;
     border-radius: 100px;
+    @media screen and (max-width: 800px) {
+        height: 90px;
+        width: 90px;
+    }
+    @media screen and (max-width: 472px) {
+        height: 60px;
+        width: 60px;
+    }
 }
 
 .profile-posts-container {
@@ -121,4 +166,22 @@
 
 .post-content {
     padding-bottom: 10px;
+    @media screen and (max-width: 550px) {
+        font-size: 12px;
+    }
+}
+
+.post-image {
+    @media screen and (max-width: 500px) {
+        width: 250px;
+    }
+    @media screen and (max-width: 420px) {
+        width: 200px;
+    }
+}
+
+.post-title {
+    @media screen and (max-width: 550px) {
+        font-size: 14px;
+    }
 }
