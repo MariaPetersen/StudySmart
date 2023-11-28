@@ -68,12 +68,27 @@ async function getAllPublications(req, res, next) {
     try {
         const offset = req.query?.offset;
         const limit = req.query?.limit;
+        console.log("here");
         const publications = await prisma.publication.findMany({
             skip: offset ? parseInt(offset) : 0,
-            take: limit ? parseInt(limit) : 100
-        });
+            take: limit ? parseInt(limit) : 100,
+            include: {
+                profile: {
+                    include: {
+                        user: {
+                            select: {
+                                lastname: true,
+                                firstname: true,
+                                username: true
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        );
         res.status(200).json(publications);
-    } catch {
+    } catch (error) {
         res.status(500).json(error);
     }
 }
