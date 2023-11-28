@@ -1,9 +1,9 @@
 const auth = require("../../middleware/auth");
 const express = require("express");
 const router = express.Router();
+var SibApiV3Sdk = require("sib-api-v3-sdk");
 
-function mail(email, username) {
-  var SibApiV3Sdk = require("sib-api-v3-sdk");
+function Mail(email, username) {
   var defaultClient = SibApiV3Sdk.ApiClient.instance;
 
   // Configure API key authorization: api-key
@@ -40,5 +40,5 @@ function mail(email, username) {
   );
 }
 module.exports = {
-  mail
+  Mail
 };

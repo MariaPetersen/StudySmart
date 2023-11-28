@@ -1,7 +1,7 @@
 const publicationDatabase = require("./../services/database/publicationDatabase");
 const profileDatabase = require("./../services/database/profileDatabase");
 const userDatabase = require("./../services/database/userDatabase");
-const mail = require("./../services/brevo/brevo");
+const { Mail } = require("./../services/brevo/brevo");
 
 async function createPublication(req, res, next) {
     try {
@@ -195,7 +195,7 @@ async function sendMail(userId) {
     });
     if (user) {
         const { email, username } = user;
-        mail(email, username);
+        Mail(email, username);
     } else {
         res.status(500).json(error);
     }
