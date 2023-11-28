@@ -43,6 +43,11 @@ async function getOneProfile(req, res, next) {
                         username: true,
                         email: true
                     }
+                },
+                profilePicture: {
+                    select: {
+                        remotePath: true
+                    }
                 }
             }
         });
