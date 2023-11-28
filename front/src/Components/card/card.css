@@ -3,6 +3,8 @@
   height: 300px;
   border: 2px solid white;
   padding: 20px;
+  margin-bottom: 5px;
+  color: white;
 }
 .first_box_card {
   width: 100%;

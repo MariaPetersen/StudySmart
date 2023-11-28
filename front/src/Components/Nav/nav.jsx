@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import './nav.css';
+import './Nav.css';
 
 export default function Nav() {
   return (
@@ -10,7 +10,9 @@ export default function Nav() {
         <NavLink className="nav_button_profil">profil</NavLink>
       </div>
       <div className="nav_box_title">
-        <h1 className="nav_title">StudySmart</h1>
+        <NavLink to={'/home'} className="nav_title">
+          StudySmart
+        </NavLink>
       </div>
       <div className="nav_box_box_auth">
         <i
