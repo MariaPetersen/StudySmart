@@ -94,66 +94,20 @@ describe('Delete Publications Function', () => {
             json: jest.fn(),
         };
 
+        userDatabase.getOneUser.mockResolvedValue(mockedProfile);
         profileDatabase.getOneProfile.mockResolvedValue(mockedProfile);
-        profileDatabase.deleteProfile.mockResolvedValue(mockedProfile);
+        publicationDatabase.getOnePublication.mockResolvedValue(mockedPublication);
+        publicationDatabase.deletePublication.mockResolvedValue(mockedPublication);
 
-        await deleteProfile(req, res);
+        await deletePublication(req, res);
 
-        expect(profileDatabase.getOneProfile).toHaveBeenCalledTimes(1);
-        expect(profileDatabase.getOneProfile).toHaveBeenCalledWith({
+        expect(publicationDatabase.deletePublication).toHaveBeenCalledTimes(1);
+        expect(publicationDatabase.deletePublication).toHaveBeenCalledWith({
             where: {
-                user_id: mockedProfile.user_id
-            }
-        });
-        expect(profileDatabase.deleteProfile).toHaveBeenCalledTimes(1);
-        expect(profileDatabase.deleteProfile).toHaveBeenCalledWith({
-            where: {
-                id: mockedProfile.id
+                id: req.params.id
             }
         });
         expect(res.status).toHaveBeenCalledWith(200);
-        expect(res.json).toHaveBeenCalledWith(mockedProfile);
     });
 
 });
-
-// describe('Update Profile Function', () => {
-//     it('should update a profile and new profile info', async () => {
-//         const req = {
-//             body: {
-//                 description: "hello"
-//             },
-//             params: {
-//                 id: mockedProfile.id
-//             },
-//             auth: {
-//                 userId: mockedProfile.user_id
-//             }
-//         };
-//         const res = {
-//             status: jest.fn().mockReturnThis(),
-//             json: jest.fn(),
-//         };
-
-//         const updatedProfile = {
-//             ...mockedProfile,
-//             description: req.body.description
-//         };
-
-//         profileDatabase.getOneProfile.mockResolvedValue(mockedProfile);
-//         profileDatabase.updateProfile.mockResolvedValue(updatedProfile);
-
-//         await updateProfile(req, res);
-
-//         expect(profileDatabase.getOneProfile).toHaveBeenCalledTimes(1);
-//         expect(profileDatabase.getOneProfile).toHaveBeenCalledWith({
-//             where: {
-//                 user_id: mockedProfile.user_id
-//             }
-//         });
-//         expect(profileDatabase.updateProfile).toHaveBeenCalledTimes(1);
-//         expect(res.status).toHaveBeenCalledWith(200);
-//         expect(res.json).toHaveBeenCalledWith(updatedProfile);
-//     });
-
-// });
