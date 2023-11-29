@@ -26,6 +26,45 @@ export default function Home() {
     response();
   }, []);
 
+  const submitPublication = async (event) => {
+    event.preventDefault();
+    console.log(value);
+    try {
+      const responsePublication = await fetch(
+        'https://studysmart-production.up.railway.app/publications',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${value.currentUser?.token.token}`,
+          },
+          body: JSON.stringify({
+            title: titlepublication,
+            description: descriptionpublication,
+            text: textpublication,
+            link: urlpublication,
+          }),
+        }
+      );
+
+      if (responsePublication.ok) {
+        console.log(responsePublication);
+        document.getElementById('text').value = '';
+        document.getElementById('description').value = '';
+        document.getElementById('url').value = '';
+        document.getElementById('title').value = '';
+        window.location.reload();
+        // Gérer la réponse en cas de succès (par exemple, redirection ou affichage d'un message)
+      } else {
+        // Gérer les erreurs de réponse
+        console.log(responsePublication);
+      }
+    } catch (error) {
+      console.log(error);
+      // Gérer les erreurs de réseau ou autres exceptions
+    }
+  };
+
   return (
     <div id="home">
       <div className="title_container">
