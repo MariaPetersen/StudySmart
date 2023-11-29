@@ -8,22 +8,18 @@ import './home.css';
 
 export default function Home() {
   const { value } = useContext(UserContext);
-  const [dataPublications, setDataPublications] = useState([]);
-  const [formOpen, setFormOpen] = useState(false);
-  const [titlepublication, setTitlePublications] = useState('');
-  const [descriptionpublication, setDescriptionPublications] = useState('');
-  const [textpublication, setTextPublications] = useState('');
-  const [urlpublication, setUrlPublications] = useState('');
-  // const [descriptionpublication, setdescriptionPublications] = useState(null);
+  const [dataPublications, setDataPublications] = useState(null);
 
+  console.log(value);
   useEffect(() => {
     const response = async () => {
-      return await fetch(
+      return await await fetch(
         'https://studysmart-production.up.railway.app/publications'
       )
         .then((data) => data.json())
         .then((publications) => {
           setDataPublications(publications);
+          console.log(publications);
         })
         .catch((error) => console.log(error));
     };
@@ -73,101 +69,15 @@ export default function Home() {
     <div id="home">
       <div className="title_container">
         <div className="title_box one">the</div>
-        <div className="title_box two">new</div>
+        <div className="title_box two">news</div>
         <div className="title_box three">feed</div>
       </div>
-      {value.currentUser ? (
-        <div className="form_container">
-          <div
-            className="add_pubications"
-            onClick={() => (formOpen ? setFormOpen(false) : setFormOpen(true))}
-          >
-            Ajouter Publications
-            {!formOpen ? (
-              <i className="fa-solid fa-chevron-down"></i>
-            ) : (
-              <i className="fa-solid fa-chevron-up"></i>
-            )}
-          </div>
-          {!formOpen ? null : (
-            <form onSubmit={submitPublication}>
-              <div className="input_container">
-                <label htmlFor="title">Title</label>
-
-                <input
-                  className="title_publication_input"
-                  type="text"
-                  name="title"
-                  id="title"
-                  placeholder="Title"
-                  value={titlepublication}
-                  onChange={(e) => setTitlePublications(e.target.value)}
-                  required
-                />
-              </div>
-              <div className="input_container">
-                <label htmlFor="text">Description</label>
-
-                <input
-                  className="title_publication_input"
-                  type="text"
-                  name="description"
-                  id="description"
-                  placeholder="Description"
-                  value={descriptionpublication}
-                  onChange={(e) => setDescriptionPublications(e.target.value)}
-                  required
-                />
-              </div>
-              <div className="input_container">
-                <label htmlFor="text">Text</label>
-
-                <input
-                  className="title_publication_input"
-                  type="text"
-                  name="text"
-                  id="text"
-                  placeholder="Text"
-                  value={textpublication}
-                  onChange={(e) => setTextPublications(e.target.value)}
-                  required
-                />
-              </div>
-
-              <div className="input_container">
-                <label htmlFor="title">URL</label>
-
-                <input
-                  className="title_publication_input"
-                  type="text"
-                  name="url"
-                  id="url"
-                  placeholder="Url"
-                  value={urlpublication}
-                  onChange={(e) => setUrlPublications(e.target.value)}
-                  required
-                />
-              </div>
-              <input
-                className="login_button_form_home"
-                value="ENTER"
-                type="submit"
-              />
-            </form>
-          )}
-        </div>
-      ) : null}
       <div className="publications_container">
-        {Array.isArray(dataPublications) && dataPublications.length > 0 ? (
-          dataPublications
-            .sort((a, b) => b.id - a.id)
-            .map((publication) => (
-              <Card key={publication.id} data={publication} />
-            ))
-        ) : (
-          <div>Aucune publication disponible.</div>
-        )}
+        {dataPublications?.map((publications) => (
+          <Card key={publications.id} data={publications} />
+        ))}
       </div>
     </div>
   );
 }
+  

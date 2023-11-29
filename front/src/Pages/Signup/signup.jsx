@@ -30,7 +30,7 @@ export default function Signin() {
       );
 
       if (response.ok) {
-        navigate('/');
+        navigate('/login');
       } else {
         console.log(response);
       }
