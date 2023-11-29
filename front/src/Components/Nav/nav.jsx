@@ -7,7 +7,9 @@ export default function Nav() {
     <div className="nav">
       <div className="nav_box_profil">
         <i className="fa-regular fa-user"></i>
-        <NavLink className="nav_button_profil">profil</NavLink>
+        <NavLink to={'/profile'} className="nav_button_profil">
+          PROFILE
+        </NavLink>
       </div>
       <div className="nav_box_title">
         <NavLink to={'/home'} className="nav_title">

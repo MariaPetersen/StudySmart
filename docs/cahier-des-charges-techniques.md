@@ -8,10 +8,8 @@
     - [Tests](#tests)
     - [Variable d'environnements](#variable-denvironnements)
     - [CI/CD](#cicd)
-    - [Linter](#linter)
     - [Git](#git)
     - [Design Pattern](#design-pattern)
-    - [Microservices](#microservices)
   - [Choix techniques](#choix-techniques)
     - [Frontend](#frontend)
     - [Backend](#backend)
@@ -47,11 +45,11 @@ Notre Stack technique est composée de :
 
 ### Tests
 
-- Jest + Cypress
+- Jest
 
 ### Variable d'environnements
 
-Les variables d'environnements sont stockés en local dans un fichier.env
+Les variables d'environnements sont stockés en local dans un fichier .env
 
 ### CI/CD
 
@@ -69,10 +67,6 @@ Les variables d'environnements sont stockés en local dans un fichier.env
 ### Design Pattern
 
 - MVC
-
-### Microservices
-
-??
 
 ## Choix techniques
 
