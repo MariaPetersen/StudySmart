@@ -57,6 +57,7 @@ export default function Home() {
         document.getElementById('description').value = '';
         document.getElementById('url').value = '';
         document.getElementById('title').value = '';
+        window.location.reload();
         // Gérer la réponse en cas de succès (par exemple, redirection ou affichage d'un message)
       } else {
         // Gérer les erreurs de réponse
