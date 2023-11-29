@@ -30,7 +30,7 @@ export default function Home() {
     <div id="home">
       <div className="title_container">
         <div className="title_box one">the</div>
-        <div className="title_box two">new</div>
+        <div className="title_box two">news</div>
         <div className="title_box three">feed</div>
       </div>
       <div className="publications_container">
