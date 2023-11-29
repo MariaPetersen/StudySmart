@@ -1,9 +1,8 @@
 const bcrypt = require('bcrypt');
 const jtw = require('jsonwebtoken');
 const dotenv = require("dotenv");
-const { PrismaClient } = require('@prisma/client');
-
-const prisma = new PrismaClient();
+const prisma = require("./../prisma/prisma");
+const userDatabase = require("./../services/database/userDatabase");
 
 dotenv.config;
 
@@ -13,7 +12,7 @@ async function signup(req, res, next) {
     try {
         const hash = await bcrypt.hash(req.body.password, 10);
         const { lastname, firstname, email, username } = req.body;
-        const result = await prisma.user.create({
+        const result = await userDatabase.createUser({
             data: {
                 lastname: lastname,
                 firstname: firstname,
@@ -30,7 +29,7 @@ async function signup(req, res, next) {
 
 async function login(req, res, next) {
     try {
-        const user = await prisma.user.findUnique({
+        const user = await userDatabase.getOneUser({
             where: {
                 email: req.body.email
             }

@@ -402,6 +402,10 @@
                   "text": {
                     "type": "string",
                     "description": "text of the publication"
+                  },
+                  "link": {
+                    "type": "string",
+                    "description": "link of the publication"
                   }
                 }
               }

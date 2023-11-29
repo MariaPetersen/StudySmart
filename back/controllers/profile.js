@@ -1,20 +1,19 @@
 const dotenv = require("dotenv");
-const { PrismaClient } = require('@prisma/client');
-
-const prisma = new PrismaClient();
+const profileDatabase = require("./../services/database/profileDatabase");
+const prisma = require("./../prisma/prisma");
 
 async function createProfile(req, res, next) {
     try {
         const { userId } = req.auth;
         const { description } = req.body;
-        if (await prisma.profile.findFirst({
+        if (await profileDatabase.getOneProfile({
             where: {
                 user_id: parseInt(userId)
             }
         })) {
             res.status(404).json("User profile already exists");
         } else {
-            const profile = await prisma.profile.create({
+            const profile = await profileDatabase.createProfile({
                 data: {
                     user_id: parseInt(userId),
                     description: description
@@ -31,7 +30,7 @@ async function getOneProfile(req, res, next) {
     try {
         const { id } = req.params;
         const { userId } = req.auth;
-        const profile = await prisma.profile.findFirst({
+        const profile = await profileDatabase.getOneProfile({
             where: {
                 user_id: parseInt(userId)
             },
@@ -67,7 +66,7 @@ async function deleteProfile(req, res, next) {
     try {
         const { id } = req.params;
         const { userId } = req.auth;
-        const profile = await prisma.profile.findFirst({
+        const profile = await profileDatabase.getOneProfile({
             where: {
                 user_id: parseInt(userId)
             }
@@ -78,7 +77,7 @@ async function deleteProfile(req, res, next) {
         else if (profile.id != id) {
             res.status(403).json("User is not allowed to delete profile");
         } else {
-            const deletedProfile = await prisma.profile.delete({
+            const deletedProfile = await profileDatabase.deleteProfile({
                 where: {
                     id: profile.id
                 }
@@ -94,7 +93,7 @@ async function updateProfile(req, res, next) {
     try {
         const { id } = req.params;
         const { userId } = req.auth;
-        const profile = await prisma.profile.findFirst({
+        const profile = await profileDatabase.getOneProfile({
             where: {
                 user_id: parseInt(userId)
             }
@@ -105,7 +104,7 @@ async function updateProfile(req, res, next) {
         else if (profile.id != id) {
             res.status(403).json("User is not allowed to update profile");
         } else {
-            const updatedProfile = await prisma.profile.update({
+            const updatedProfile = await profileDatabase.updateProfile({
                 where: {
                     id: parseInt(profile.id)
                 },
@@ -118,7 +117,7 @@ async function updateProfile(req, res, next) {
                             },
                             data: {
                                 lastname: req.body.lastname,
-                                firstname: req.body.firstnamename,
+                                firstname: req.body.firstname,
                                 email: req.body.email,
                                 username: req.body.username
                             }

@@ -8,10 +8,8 @@
     - [Tests](#tests)
     - [Variable d'environnements](#variable-denvironnements)
     - [CI/CD](#cicd)
-    - [Linter](#linter)
     - [Git](#git)
     - [Design Pattern](#design-pattern)
-    - [Microservices](#microservices)
   - [Choix techniques](#choix-techniques)
     - [Frontend](#frontend)
     - [Backend](#backend)
@@ -47,17 +45,15 @@ Notre Stack technique est composée de :
 
 ### Tests
 
-- Jest + Cypress
+- Jest
 
 ### Variable d'environnements
 
-Les variables d'environnements sont stockés en local dans un fichier.env
+Les variables d'environnements sont stockés en local dans un fichier .env
 
 ### CI/CD
 
-### Linter
-
-??
+Mise en place d'une intégration continue avec le lancement de tests de l'api dès un push sur le dépôt distant et un déploiement continu avec le redéploiement du back dès qu'il est merge sur master
 
 ### Git
 
@@ -69,10 +65,6 @@ Les variables d'environnements sont stockés en local dans un fichier.env
 ### Design Pattern
 
 - MVC
-
-### Microservices
-
-??
 
 ## Choix techniques
 
@@ -106,7 +98,7 @@ Nos possibilités étaient :
 
 ## Schéma de l'application
 
-![Texte alternatif](architecture.png "Schéma de l'application")
+![Texte alternatif](Architecture-StudySmart.png "Schéma de l'application")
 
 ## Schéma de la base de données
 
