@@ -28,7 +28,7 @@ Notre équipe est composée de :
 
 - 3 développeurs front-end
 - 2 développeurs back-end
-- 1 lead-developpeur / devops
+- 1 développeur back-end/devops
 
 ## Stack
 
@@ -41,7 +41,7 @@ Notre Stack technique est composée de :
 
 ## Bonnes pratiques
 
-- Nous utilisons une approche clean code.
+- Nous mettons en place des pratiques de clean code.
 
 ### Tests
 
