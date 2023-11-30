@@ -10,7 +10,7 @@ export default function publication() {
         <div className="publication-all">
           <div className="publication-left">
             <div className="publication-left-top">
-              <img src="./Williams2.png" />
+              <img src="./Williams2.png" alt="publication_picture" />
               <h1>Lucas</h1>
             </div>
             <div className="line"></div>
@@ -36,7 +36,7 @@ export default function publication() {
           </div>
           <div className="publication-right">
             <div className="content">
-              <img src="./Williams2.png" />
+              <img src="./Williams2.png" alt="publication_picture" />
             </div>
           </div>
         </div>

@@ -63,7 +63,6 @@ export default function Signin() {
       </div>
       <div className="signup_right">
         <div className="signup_right_box">
-          <h2></h2>
           <form className="signup_form" onSubmit={submitSignup}>
             <div className="input_container">
               <span> EMAIL</span>
@@ -132,9 +131,9 @@ export default function Signin() {
           <div className="signup_form_line">
             <div></div>
             <div>
-                <NavLink to={'/'} className="signup_form_login">
+              <NavLink to={'/'} className="signup_form_login">
                 LOGIN
-                </NavLink>
+              </NavLink>
             </div>
           </div>
         </div>
