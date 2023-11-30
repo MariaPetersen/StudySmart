@@ -58,10 +58,16 @@ export default function Card({ data }) {
       <div className="second_box_card">{data.title}</div>
 
       {isValidUrl(data.link) && data.link.includes('youtube') ? (
-        <iframe width="100%" height="100%" src={`${data.link}`}></iframe>
+        <iframe
+          title="link_preview"
+          width="100%"
+          height="100%"
+          src={`${data.link}`}
+        ></iframe>
       ) : linkreview && linkreview.ogp && linkreview.ogp['og:image'] ? (
         <img
           className="imgcover"
+          alt={data.title}
           onClick={() => window.open(`${data.link}`)}
           src={`${linkreview.ogp['og:image'][0]}`}
         />
