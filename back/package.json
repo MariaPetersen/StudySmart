@@ -5,7 +5,11 @@
   "main": "server.js",
   "scripts": {
     "test": "jest",
-    "start": "node server.js"
+    "start": "node server.js",
+    "start:dev": "nodemon server.js",
+    "start:prod": "node server.js",
+    "db": "prisma db push",
+    "db:generate": "prisma migrate dev --name init"
   },
   "repository": {
     "type": "git",
@@ -18,8 +22,8 @@
   },
   "homepage": "https://github.com/MariaPetersen/StudySmart#readme",
   "dependencies": {
-    "@prisma/client": "^5.5.2",
     "@types/jest": "^29.5.10",
+    "@prisma/client": "^5.6.0",
     "bcrypt": "^5.1.1",
     "cloudinary": "^1.41.0",
     "dotenv": "^16.3.1",
@@ -32,6 +36,6 @@
     "nodemon": "^3.0.1"
   },
   "devDependencies": {
-    "prisma": "^5.5.2"
+    "prisma": "^5.6.0"
   }
 }
