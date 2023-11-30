@@ -20,20 +20,20 @@ services:
     depends_on:
       - db
 
-  # back:
-  #   restart: unless-stopped
-  #   build:
-  #     context: ./back
-  #     args:
-  #       - NODE_ENV=${NODE_ENV}
-  #     target: ${NODE_ENV}
-  #   ports:
-  #     - "${BACK_PORT}:${BACK_PORT}"
-  #   depends_on:
-  #     - db
-  #   volumes:
-  #     - ./back:/app/back
-  #   env_file: .env
+  back:
+    restart: unless-stopped
+    build:
+      context: ./back
+      args:
+        - NODE_ENV=${NODE_ENV}
+      target: ${NODE_ENV}
+    ports:
+      - "${BACK_PORT}:${BACK_PORT}"
+    depends_on:
+      - db
+    volumes:
+      - ./back:/app/back
+    env_file: .env
 
   front:
     restart: unless-stopped
@@ -44,8 +44,8 @@ services:
       target: ${NODE_ENV}
     ports:
       - "${FRONT_PORT}:${FRONT_PORT}"
-    # depends_on:
-    #   - back
+    depends_on:
+      - back
     volumes:
       - ./front:/app/front
     env_file: .env
