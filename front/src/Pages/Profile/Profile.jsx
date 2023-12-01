@@ -21,7 +21,6 @@ export default function Profile() {
     const file = e.target.files[0];
     const formData = new FormData();
     formData.append('image', file);
-    console.log(formData);
     const response = await fetch(`http://localhost:3001/images`, {
       method: 'POST',
       headers: {
@@ -35,12 +34,10 @@ export default function Profile() {
     }
   };
   const fetchUserProfile = useCallback(async () => {
-    console.log(value);
     try {
       if (!isAuthenticated) {
         return;
       }
-      console.log('here');
       const response = await fetch(
         `https://studysmart-production.up.railway.app/profile/${value.currentUser?.token.userId}`,
         {
