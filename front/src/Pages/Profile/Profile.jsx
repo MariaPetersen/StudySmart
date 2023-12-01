@@ -21,13 +21,16 @@ export default function Profile() {
     const file = e.target.files[0];
     const formData = new FormData();
     formData.append('image', file);
-    const response = await fetch(`http://localhost:3001/images`, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${value.currentUser?.token.token}`,
-      },
-      body: formData,
-    });
+    const response = await fetch(
+      `https://studysmart-production.up.railway.app/images`,
+      {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${value.currentUser?.token.token}`,
+        },
+        body: formData,
+      }
+    );
     if (response.ok) {
       const profilePicture = await response.json();
       setProfilePicture(profilePicture.remotePath);
