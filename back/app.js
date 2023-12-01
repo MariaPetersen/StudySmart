@@ -3,6 +3,7 @@ const dotenv = require("dotenv");
 const fileupload = require("express-fileupload");
 
 const auth = require("./middleware/auth");
+const cors = require('cors');
 const userRoutes = require("./routes/user");
 const profileRoutes = require("./routes/profile");
 const publicationRoutes = require("./routes/publication");
@@ -10,6 +11,7 @@ const imagesRoutes = require('./routes/images');
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 
 dotenv.config();

@@ -4,11 +4,6 @@ import { UserContext } from '../../Context/Usercontext';
 import { useContext } from 'react';
 import './Profile.css';
 
-var loadFile = function (e) {
-  var image = document.getElementById('output');
-  image.src = URL.createObjectURL(e.target.files[0]);
-};
-
 export default function Profile() {
   const [userProfile, setUserProfile] = useState({
     email: '',
@@ -18,15 +13,31 @@ export default function Profile() {
     posts: [],
   });
   const { value } = useContext(UserContext);
+  const [profilePicture, setProfilePicture] = useState(null);
 
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
 
+  var uploadFile = async (e) => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append('image', file);
+    const response = await fetch(`http://localhost:3001/images`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${value.currentUser?.token.token}`,
+      },
+      body: formData,
+    });
+    if (response.ok) {
+      const profilePicture = await response.json();
+      setProfilePicture(profilePicture.remotePath);
+    }
+  };
   const fetchUserProfile = useCallback(async () => {
     try {
       if (!isAuthenticated) {
         return;
       }
-
       const response = await fetch(
         `https://studysmart-production.up.railway.app/profile/${value.currentUser?.token.userId}`,
         {
@@ -41,6 +52,7 @@ export default function Profile() {
       if (response.ok) {
         const profileData = await response.json();
         setUserProfile(profileData.user);
+        setProfilePicture(profileData.profilePicture.remotePath);
       } else {
         console.error('Failed to fetch user profile');
       }
@@ -55,7 +67,6 @@ export default function Profile() {
       fetchUserProfile();
     }
   }, [value.currentUser, fetchUserProfile]);
-  console.log(value);
 
   if (!isAuthenticated) {
     return <Navigate to="/login" />;
@@ -102,18 +113,20 @@ export default function Profile() {
         <div className="profile-picture-container">
           <img
             className="profile-picture-output"
-            src="./image-post-placeholder.png"
+            src={
+              profilePicture ? profilePicture : './image-post-placeholder.png'
+            }
             id="output"
             alt="profile_picture"
           />
-          <label class="profile-button" htmlFor="file">
+          <label className="profile-button" htmlFor="file">
             <span>EDIT PROFILE PICTURE</span>
           </label>
           <input
             className="profile-picture-input"
             id="file"
             type="file"
-            onChange={loadFile}
+            onChange={uploadFile}
           />
         </div>
 
