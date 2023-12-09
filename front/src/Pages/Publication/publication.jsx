@@ -1,6 +1,37 @@
-import React from 'react';
+import React, { useContext, useCallback, useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { UserContext } from '../../Context/Usercontext';
 import './publication.css';
+
 export default function Publication() {
+  const { id } = useParams();
+  const { value } = useContext(UserContext);
+  const [publication, setPublication] = useState();
+
+  const fetchPublication = useCallback(async () => {
+    try {
+      const response = await fetch(
+        `https://studysmart-production.up.railway.app/publications/${id}`,
+        {
+          method: 'GET',
+        }
+      );
+
+      if (response.ok) {
+        const publicationData = await response.json();
+        setPublication(publicationData);
+      } else {
+        console.error('Failed to fetch publication');
+      }
+    } catch (error) {
+      console.error('Error fetching publication:', error);
+    }
+  }, [id]);
+
+  useEffect(() => {
+    fetchPublication();
+  }, [fetchPublication]);
+
   return (
     <div id="content">
       <div className="publication">
@@ -11,23 +42,18 @@ export default function Publication() {
           <div className="publication-left">
             <div className="publication-left-top">
               <img src="./Williams2.png" alt="publication_picture" />
-              <h1>Lucas</h1>
+              <h1>{publication.title}</h1>
             </div>
             <div className="line"></div>
             <div className="description">
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni
-                explicabo temporibus commodi totam nihil corrupti veritatis qui.
-                Aut modi perspiciatis illo, eos itaque quo suscipit inventore.
-                Porro obcaecati ab dignissimos!
-              </p>
+              <p>{publication.description}</p>
             </div>
             <div className="line"></div>
             <div className="information">
-              <div className="date">
+              {/* <div className="date">
                 <span>Date</span>
                 <p>10 AUGUST 2023</p>
-              </div>
+              </div> */}
               <div className="email">
                 <span>Email</span>
                 <p>YALMANLUCAS@GMAIL.COM</p>
