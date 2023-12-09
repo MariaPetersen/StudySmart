@@ -100,8 +100,9 @@
   font-size: 24px;
 }
 
-.description link {
+.link {
   text-decoration: none;
+  color: #f9dcc5;
 }
 .information {
   display: flex;
