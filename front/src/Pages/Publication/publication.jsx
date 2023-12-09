@@ -44,7 +44,9 @@ export default function Publication() {
       {console.log(publication)}
       <div className="publication">
         <div className="return">
-          <p>RETURN</p>
+          <Link to="/" className="link">
+            RETURN
+          </Link>
         </div>
         <div className="publication-all">
           <div className="publication-left">
@@ -67,11 +69,11 @@ export default function Publication() {
             <div className="information">
               <div className="date">
                 <span>Date</span>
-                <p>{formatDate(publication.date)}</p>
+                <p>{formatDate(publication?.date)}</p>
               </div>
               <div className="email">
                 <span>Username</span>
-                <p>{publication.user.username}</p>
+                <p>{publication?.user.username}</p>
               </div>
             </div>
           </div>
