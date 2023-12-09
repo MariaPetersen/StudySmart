@@ -1,5 +1,5 @@
 import React, { useContext, useCallback, useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { UserContext } from '../../Context/Usercontext';
 import './publication.css';
 
@@ -28,12 +28,20 @@ export default function Publication() {
     }
   }, [id]);
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const options = { day: 'numeric', month: 'long', year: 'numeric' };
+    const formattedDate = date.toLocaleDateString(undefined, options);
+    return formattedDate;
+  };
+
   useEffect(() => {
     fetchPublication();
   }, [fetchPublication]);
 
   return (
     <div id="content">
+      {console.log(publication)}
       <div className="publication">
         <div className="return">
           <p>RETURN</p>
@@ -41,30 +49,33 @@ export default function Publication() {
         <div className="publication-all">
           <div className="publication-left">
             <div className="publication-left-top">
-              <img src="./Williams2.png" alt="publication_picture" />
-              <h1>{publication.title}</h1>
+              <h1>{publication?.title}</h1>
             </div>
             <div className="line"></div>
             <div className="description">
-              <p>{publication.description}</p>
+              <p>{publication?.description}</p>
+            </div>
+            <div className="description">
+              <Link className="description link" href={`${publication?.link}`}>
+                {publication?.link}
+              </Link>
+            </div>
+            <div className="description">
+              <p>{publication?.text}</p>
             </div>
             <div className="line"></div>
             <div className="information">
-              {/* <div className="date">
+              <div className="date">
                 <span>Date</span>
-                <p>10 AUGUST 2023</p>
-              </div> */}
+                <p>{formatDate(publication.date)}</p>
+              </div>
               <div className="email">
-                <span>Email</span>
-                <p>YALMANLUCAS@GMAIL.COM</p>
+                <span>Username</span>
+                <p>{publication.user.username}</p>
               </div>
             </div>
           </div>
-          <div className="publication-right">
-            <div className="content">
-              <img src="./Williams2.png" alt="publication_picture" />
-            </div>
-          </div>
+          <div className="publication-right"></div>
         </div>
       </div>
     </div>
