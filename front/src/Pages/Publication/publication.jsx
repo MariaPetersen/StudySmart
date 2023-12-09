@@ -1,11 +1,9 @@
-import React, { useContext, useCallback, useState, useEffect } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { UserContext } from '../../Context/Usercontext';
 import './publication.css';
 
 export default function Publication() {
   const { id } = useParams();
-  const { value } = useContext(UserContext);
   const [publication, setPublication] = useState();
 
   const fetchPublication = useCallback(async () => {
