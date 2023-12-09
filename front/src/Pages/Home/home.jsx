@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import Card from '../../Components/card/card';
 import './home.css';
+import { Link } from 'react-router-dom';
 
 export default function Home() {
   const { value } = useContext(UserContext);
@@ -162,7 +163,12 @@ export default function Home() {
           dataPublications
             .sort((a, b) => b.id - a.id)
             .map((publication) => (
-              <Card key={publication.id} data={publication} />
+              <Link
+                to={`publication/${publication.id}`}
+                className="publication_container"
+              >
+                <Card key={publication.id} data={publication} />
+              </Link>
             ))
         ) : (
           <div>Aucune publication disponible.</div>

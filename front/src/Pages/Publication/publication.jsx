@@ -1,44 +1,81 @@
-import React from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import './publication.css';
-export default function publication() {
+
+export default function Publication() {
+  const { id } = useParams();
+  const [publication, setPublication] = useState();
+
+  const fetchPublication = useCallback(async () => {
+    try {
+      const response = await fetch(
+        `https://studysmart-production.up.railway.app/publications/${id}`,
+        {
+          method: 'GET',
+        }
+      );
+
+      if (response.ok) {
+        const publicationData = await response.json();
+        setPublication(publicationData);
+      } else {
+        console.error('Failed to fetch publication');
+      }
+    } catch (error) {
+      console.error('Error fetching publication:', error);
+    }
+  }, [id]);
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const options = { day: 'numeric', month: 'long', year: 'numeric' };
+    const formattedDate = date.toLocaleDateString(undefined, options);
+    return formattedDate;
+  };
+
+  useEffect(() => {
+    fetchPublication();
+  }, [fetchPublication]);
+
   return (
     <div id="content">
+      {console.log(publication)}
       <div className="publication">
         <div className="return">
-          <p>RETURN</p>
+          <Link to="/" className="link">
+            RETURN
+          </Link>
         </div>
         <div className="publication-all">
           <div className="publication-left">
             <div className="publication-left-top">
-              <img src="./Williams2.png" alt="publication_picture" />
-              <h1>Lucas</h1>
+              <h1>{publication?.title}</h1>
             </div>
             <div className="line"></div>
             <div className="description">
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni
-                explicabo temporibus commodi totam nihil corrupti veritatis qui.
-                Aut modi perspiciatis illo, eos itaque quo suscipit inventore.
-                Porro obcaecati ab dignissimos!
-              </p>
+              <p>{publication?.description}</p>
+            </div>
+            <div className="description">
+              <Link className="description link" href={`${publication?.link}`}>
+                {publication?.link}
+              </Link>
+            </div>
+            <div className="description">
+              <p>{publication?.text}</p>
             </div>
             <div className="line"></div>
             <div className="information">
               <div className="date">
                 <span>Date</span>
-                <p>10 AUGUST 2023</p>
+                <p>{formatDate(publication?.date)}</p>
               </div>
               <div className="email">
-                <span>Email</span>
-                <p>YALMANLUCAS@GMAIL.COM</p>
+                <span>Username</span>
+                <p>{publication?.user.username}</p>
               </div>
             </div>
           </div>
-          <div className="publication-right">
-            <div className="content">
-              <img src="./Williams2.png" alt="publication_picture" />
-            </div>
-          </div>
+          <div className="publication-right"></div>
         </div>
       </div>
     </div>

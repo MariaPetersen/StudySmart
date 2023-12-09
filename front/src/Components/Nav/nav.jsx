@@ -6,7 +6,6 @@ import { UserContext } from '../../Context/Usercontext';
 
 export default function Nav() {
   const { value } = useContext(UserContext);
-  console.log(value);
   return (
     <div className="nav">
       <div className="nav_box_profil">
@@ -16,7 +15,7 @@ export default function Nav() {
         </NavLink>
       </div>
       <div className="nav_box_title">
-        <NavLink to={'/home'} className="nav_title">
+        <NavLink to={'/'} className="nav_title">
           StudySmart
         </NavLink>
       </div>

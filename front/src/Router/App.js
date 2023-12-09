@@ -14,12 +14,11 @@ function App() {
       <UserContextProvider>
         <Nav />
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/publication" element={<Publication />} />
+          <Route path="/publication/:id" element={<Publication />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/home" element={<Home />} />
         </Routes>
         <Footer />
       </UserContextProvider>
