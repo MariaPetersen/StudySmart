@@ -1,6 +1,6 @@
 import React from 'react';
 import './publication.css';
-export default function publication() {
+export default function Publication() {
   return (
     <div id="content">
       <div className="publication">

@@ -35,7 +35,7 @@ export default function Login() {
         if (userData) {
           // Stockez le token de l'utilisateur dans le localStorage
           value.login(userData);
-          navigate('/home');
+          navigate('/');
         } else {
           // le cas où le token n'est pas retourné
           console.error('Token non reçu');
