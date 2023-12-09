@@ -166,6 +166,31 @@
                     "link": {
                       "type": "string",
                       "example": "http://images.com"
+                    },
+                    "date": {
+                      "type": "string",
+                      "example": "2023-11-29T00:00:00.000Z"
+                    },
+                    "user": {
+                      "type": "object",
+                      "properties": {
+                        "firstname": {
+                          "type": "string",
+                          "example": "John"
+                        },
+                        "lastname": {
+                          "type": "string",
+                          "example": "Doe"
+                        },
+                        "username": {
+                          "type": "string",
+                          "example": "Johnnnyy"
+                        }
+                      }
+                    },
+                    "user_id": {
+                      "type": "integer",
+                      "example": 1
                     }
                   }
                 }
