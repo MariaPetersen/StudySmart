@@ -1,15 +1,14 @@
-const auth = require("../../middleware/auth");
-const express = require("express");
-const router = express.Router();
+const dotenv = require('dotenv');
+var SibApiV3Sdk = require("sib-api-v3-sdk");
+
+dotenv.config();
 
 function Mail(email, username) {
-  var SibApiV3Sdk = require("sib-api-v3-sdk");
   var defaultClient = SibApiV3Sdk.ApiClient.instance;
 
   // Configure API key authorization: api-key
   var apiKey = defaultClient.authentications["api-key"];
-  apiKey.apiKey =
-    "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";
+  apiKey.apiKey = process.env.BREVO_API_KEY;
 
   var apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
 
@@ -40,5 +39,5 @@ function Mail(email, username) {
   );
 }
 module.exports = {
-  Mail,
+  Mail
 };
