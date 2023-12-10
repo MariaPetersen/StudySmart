@@ -1,6 +1,7 @@
 const publicationDatabase = require("./../services/database/publicationDatabase");
 const profileDatabase = require("./../services/database/profileDatabase");
 const userDatabase = require("./../services/database/userDatabase");
+const { Mail } = require("./../services/brevo/brevo");
 
 async function createPublication(req, res, next) {
     try {
@@ -33,6 +34,11 @@ async function createPublication(req, res, next) {
                 }
             }
         });
+        try {
+            sendMail(userId);
+        } catch (error) {
+            console.log(error);
+        }
         res.status(200).json(publication);
     } catch (error) {
         res.status(500).json(error);
@@ -177,6 +183,20 @@ async function deletePublication(req, res, next) {
             res.status(200).json(deletePublication);
         }
     } catch (error) {
+        res.status(500).json(error);
+    }
+}
+
+async function sendMail(userId) {
+    const user = await userDatabase.getOneUser({
+        where: {
+            id: userId,
+        },
+    });
+    if (user) {
+        const { email, username } = user;
+        Mail(email, username);
+    } else {
         res.status(500).json(error);
     }
 }
