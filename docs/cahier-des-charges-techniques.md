@@ -27,8 +27,7 @@ Notre produit est un outil de veille pour aider les étudiants en tech à partag
 Notre équipe est composée de :
 
 - 3 développeurs front-end
-- 2 développeurs back-end
-- 1 lead-developpeur / devops
+- 3 développeurs back-end
 
 ## Stack
 
@@ -53,7 +52,7 @@ Les variables d'environnements sont stockés en local dans un fichier .env
 
 ### CI/CD
 
-Mise en place d'une intégration continue avec le lancement de tests de l'api dès un push sur le dépôt distant et un déploiement continu avec le redéploiement du back dès qu'il est merge sur master
+Mise en place d'une intégration continue avec le lancement de tests de l'api dès un push sur le dépôt distant et un déploiement continu avec le redéploiement du site dès qu'il est mergé sur master
 
 ### Git
 
