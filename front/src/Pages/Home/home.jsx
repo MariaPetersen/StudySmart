@@ -33,15 +33,16 @@ export default function Home() {
 
   const submitPublication = async (event) => {
     event.preventDefault();
-    console.log(value);
     try {
       const responsePublication = await fetch(
-        'https://studysmart-production.up.railway.app/publications',
+        'http://localhost:3001/publications',
         {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${value.currentUser?.token.token}`,
+            'Authorization': `Bearer ${
+              value.currentUser?.token?.token || value.currentUser?.user?.token
+            }`,
           },
           body: JSON.stringify({
             title: titlepublication,
