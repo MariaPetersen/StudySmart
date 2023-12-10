@@ -35,7 +35,7 @@ export default function Home() {
     event.preventDefault();
     try {
       const responsePublication = await fetch(
-        'http://localhost:3001/publications',
+        'https://studysmart-production.up.railway.app/publications',
         {
           method: 'POST',
           headers: {
